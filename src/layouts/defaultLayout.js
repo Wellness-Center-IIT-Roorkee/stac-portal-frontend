@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../components/common/navBar';
+import './style.css'
 
 const DefaultLayout = ({ children }) => {
   return (
@@ -7,14 +8,13 @@ const DefaultLayout = ({ children }) => {
       <main
         style={{
           height: '100vh',
-          overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
         {' '}
         <NavBar />
-        <div>
+        <div className="wl_sp_af_nav">
           {children}
         </div>
       </main>

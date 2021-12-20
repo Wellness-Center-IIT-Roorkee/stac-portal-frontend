@@ -1,0 +1,155 @@
+@import url('http://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.wl_sp_af_nav{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.wl_sp_lp_main{
+    position: relative;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 0 8vw;
+}
+.wl_sp_lp_main2{
+    position: relative;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 0 8vw;
+    margin-top: 7vh;
+}
+.wl_sp_lp_lft h1{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 4.6vmax;
+    line-height: 5.4vmax;
+    letter-spacing: 0.04vmax;
+    color: #2F2A69;
+}
+.wl_sp_lp_lft h4{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.56vmax;
+    line-height: 2vmax;
+    color: #2F2A69;
+}
+.wl_sp_lp_lft p{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.4vmax;
+    line-height: 1.78vmax;
+    color: #2F2A69;
+}
+.wl_sp_lp_lft2 p{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.1vmax;
+    line-height: 1.5vmax;
+    color: #000000;
+}
+.wl_sp_lp_lft button{
+    background: #F35548;
+    border-radius: 1.07vmax;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.78vmax;
+    line-height: 2.07vmax;
+    letter-spacing: 0.05vmax;
+    color: #F4F9FF;
+    padding: 0.7vmax 2.8vmax;
+    border: 0.2vmax solid #F35548;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+}
+.wl_sp_lp_lft button:hover{
+    background: none;
+    color: #F35548;
+}
+.wl_sp_lp_lft button:active{
+    background: #f3564857;
+}
+.wl_sp_lp_rgt{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2.8vmax;
+}
+.wl_sp_lp_rgt img{
+    width: 100%;
+    transform: scale(1.3) translate(0,2.1vmax);
+}
+.wl_sp_lp_rgt2{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2.8vmax;
+}
+.wl_sp_lp_rgt2 img{
+    width: 80%;
+    transform: scale(1) translate(0,2.1vmax);
+}
+.wl_sp_lp_main_form_progress{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7vh;
+}
+.wl_sp_lp_main_form_btn{
+    border: 0.07vmax solid #000000;
+    box-sizing: border-box;
+    border-radius: 0.55vmax;
+    padding: 0.8vmax;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vmax;
+    line-height: 1.68vmax;
+    letter-spacing: 0.1vmax;
+    color: rgba(0, 0, 0, 0.7);
+    background: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.wl_sp_lp_main_form_btn_filled{
+    background: #F35548;
+    color: #fff;
+    border: 0.07vmax solid #F35548;
+}
+.wl_sp_lp_main_form_line_svg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3vmax;
+    position: relative;
+}
+.wl_sp_lp_main_form_line_svg img{
+    width: 2.5vmax !important;
+    height: 2.5vmax !important;
+    z-index: 100; 
+}
+.wl_sp_lp_main_form_line{
+    border-top: 0.3vmax dashed #BCBCBC;
+    height: 0;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width:500px) {
+    .wl_sp_lp_main,.wl_sp_lp_main2{
+        grid-template-columns: 100%;
+    }
+    .wl_sp_lp_rgt,.wl_sp_lp_rgt2{
+        display: none;
+    }
+}

@@ -11,12 +11,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../assets/logo/iitr.png';
 import { makeStyles } from '@mui/styles';
+import './style.css'
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const useStyles = makeStyles(theme => ({
     appBar: {
         display: 'flex'
+    },
+    iitrLogo:{
+      width:"2.8vmax",
+      height:"2.8vmax"
     }
 }))
 
@@ -32,6 +37,8 @@ function ResponsiveAppBar () {
     setAnchorElUser(null);
   };
 
+  const isAuth = false;
+
   return (
     <AppBar position="static" color="default" className={classes.appBar}>
       <Container maxWidth="xl">
@@ -42,10 +49,11 @@ function ResponsiveAppBar () {
             component="div"
             sx={{ flexGrow: 1, display: 'flex' }}
           >
-            <Avatar alt="IITR" src={logo} />
+            <Avatar className={classes.iitrLogo} alt="IITR" src={logo} />
           </Typography>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {isAuth?
+            <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="User" src="/static/images/avatar/2.jpg" />
@@ -73,7 +81,12 @@ function ResponsiveAppBar () {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>:
+          <div className="wl_sp_nav_btns_parent">
+            <button className="wl_sp_nav_btns_login">Login</button>
+            <button className="wl_sp_nav_btns_signup">Sign Up</button>
+          </div>
+          }
         </Toolbar>
       </Container>
     </AppBar>

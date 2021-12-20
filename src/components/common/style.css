@@ -1,0 +1,82 @@
+@import url('http://fonts.cdnfonts.com/css/sf-pro-display');
+
+.wl_sp_nav_btns_parent{
+    display: flex;
+    align-items: center;
+}
+.wl_sp_nav_btns_login{
+    margin: 1.1vmax;
+    border: 2.5px solid #4649EE;
+    border-radius: 15px;
+    background: none;
+    padding: 0.8vmax 2.1vmax;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.35vmax;
+    line-height: 1.5vmax;
+    letter-spacing: 0.035vmax;
+    color: #4446E9;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.wl_sp_nav_btns_signup{
+    box-sizing: border-box;
+    margin: 1.1vmax;
+    border: 2.5px solid #4649EE;
+    border-radius: 15px;
+    background: #4649EE;
+    padding: 0.8vmax 2.1vmax;
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.35vmax;
+    line-height: 1.5vmax;
+    letter-spacing: 0.035vmax;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.wl_sp_nav_btns_login:hover{
+    box-shadow: 0 0 0.25vmax #000;
+}
+.wl_sp_nav_btns_signup:hover{
+    box-shadow: 0 0 0.25vmax #000;
+}
+.wl_sp_nav_btns_signup:active{
+    filter: brightness(70%);
+}
+.wl_sp_nav_btns_login:active{
+    background: #4649ee4d;
+}
+.wl_sp_hm_rcap{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    width: 100%;
+    margin: 1.35vmax 0;
+}
+.wl_sp_hm_rcap_nrml{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.4vmax;
+    line-height: 1.7vmax;
+    text-align: center;
+    letter-spacing: 0.04vmax;
+    color: #2F2A69;
+}
+.wl_sp_hm_rcap_head{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.7vmax;
+    line-height: 2.07vmax;
+    text-align: center;
+    letter-spacing: 0.04vmax;
+    color: #2F2A69;
+}
+.wl_sp_hm_rcap_ital{
+    font-style: italic;
+}
