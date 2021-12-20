@@ -3,6 +3,7 @@ import DefaultLayout from './layouts/defaultLayout';
 import ProtectedRoute from './ProtectedRoute';
 import Home from './views/home'
 import routes from './routes';
+import Application from './views/application'
 
 function App() {
   const isAuth = true
@@ -12,6 +13,7 @@ function App() {
         <Routes>
         <Route exact path='/' element={<ProtectedRoute isAuthenticated={isAuth} />}>
           <Route exact path='/' element={<Home />}/>
+          <Route exact path='/application' element={<Application />}/>
         </Route>
         </Routes>
       </Router>
