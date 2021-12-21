@@ -6,11 +6,11 @@ const FinalSubmit = () => {
     const isAuth = true;
     return (
             <div>
-            <form>
+            <form className='wl-st-form'>
                 <div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <h1 className='head'>Submit</h1><br></br>
-                        <p>Your details are completed.<br></br>
+                        <p className='wl-st-desc'>Your details are completed.<br></br>
                 Return to home page for further information and other updates about your application</p><br></br>
                     </div>
                 </div>

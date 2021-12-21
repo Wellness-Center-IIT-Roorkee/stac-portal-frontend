@@ -6,19 +6,19 @@ const DocUpload = () => {
     const isAuth = true;
     return (
             <div>
-            <form>
+            <form className='wl-st-form'>
                 <div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Application Form</label><br></br>
-                        <input type="file" ></input><br></br>
+                        <input type="file" className='info-val'></input><br></br>
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Extension Letter</label><br></br>
-                        <input type="file" ></input><br></br>
+                        <input type="file" className='info-val'></input><br></br>
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Academic Summary</label><br></br>
-                        <input type="file" ></input><br></br>
+                        <input type="file" className='info-val'></input><br></br>
                     </div>
                 </div>
                 <div>
