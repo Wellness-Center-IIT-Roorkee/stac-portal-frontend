@@ -101,6 +101,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 7vh;
+    padding:2%;
 }
 .wl_sp_lp_main_form_btn{
     border: 0.07vmax solid #000000;
