@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import './form.css'
+import FormBtn from '../../components/forms/formBtn';
 
 const FinalSubmit = () => {
     const isAuth = true;
@@ -15,8 +16,7 @@ const FinalSubmit = () => {
                     </div>
                 </div>
                 <div>
-                    <button className='btn-save'>Go Back</button>
-                    <button className='btn-next'>Submit</button>
+                    <FormBtn nameLft='Save Changes' nameRgt='Next' />
                 </div>
             </form>
                 
