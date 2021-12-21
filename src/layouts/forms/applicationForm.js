@@ -56,30 +56,30 @@ const ApplicationForm = () => {
                 </div>
                 <div>
                     <h1 className='wl-st-form-head'>Supervisor Information</h1>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Name</label><br></br>
                         <input type="text" value="Enter name" className='info-val'></input><br></br>
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Mobile Number</label><br></br>
                         <input type="number" value="Enter number" className='info-val'></input><br></br>
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Email Id</label><br></br>
                         <input type="email" value="Enter email" className='info-val'></input><br></br>  
                     </div>
                 </div>
                 <div>
                     <h1 className='wl-st-form-head'>Head of Department (HOD) Information</h1>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Name</label><br></br>
                         <input type="text" value="Enter name" className='info-val'></input><br></br>
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Mobile Number</label><br></br>
                         <input type="number" value="Enter number" className='info-val'></input><br></br> 
                     </div>
-                    <div className='box'>
+                    <div className='wl-st-form-box'>
                         <label className='info-name'>Email Id</label><br></br>
                         <input type="email" value="Enter email" className='info-val'></input><br></br>
                     </div>
