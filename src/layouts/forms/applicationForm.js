@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import FormBtn from '../../components/forms/formBtn';
+import FormBox from '../../components/forms/formComponent';
 import './form.css'
 
 const ApplicationForm = () => {
@@ -9,22 +11,10 @@ const ApplicationForm = () => {
             <form className='wl-st-form'>
                 <div>
                     <h1 className='wl-st-form-head'>Personal Information</h1>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Name</label><br></br>
-                        <input type="text" value="Enter your name" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Enrollment Number</label><br></br>
-                        <input type="number" value="Enter your enrollment name" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Email</label><br></br>
-                        <input type="email" value="Enter your email" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Mobile Number</label><br></br>
-                        <input type="number" value="Enter your number" className='info-val'></input><br></br>
-                    </div>
+                    <FormBox name='Name' type='text' ph='Enter your name' />
+                    <FormBox name='Enrollment Number' type='number' ph='Enter your enrollment number' />
+                    <FormBox name='Email Id' type='email' ph='Enter your email' />
+                    <FormBox name='Mobile Number' type='number' ph='Enter your number' />
                     <div className='wl-st-form-box'>
                         <label className='info-name'>Select your course</label><br></br>
                         <br></br>
@@ -41,52 +31,24 @@ const ApplicationForm = () => {
                         <span className='check'></span>
                         </label><br></br>
                     </div>
-                        <div className='wl-st-form-box'>
-                        <label className='info-name'>Department/Centre</label><br></br>
-                    <input type="text" value="Enter your department or centre" className='info-val'></input><br></br>
-                    </div>
-                        <div className='wl-st-form-box'>
-                        <label className='info-name'>Branch</label><br></br>
-                    <input type="text" value="Enter your branch" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Semester applied for</label><br></br>
-                        <input type="text" value="Enter your semester" className='info-val'></input><br></br>
-                    </div>
+                    <FormBox name='Department/Centre' type='text' ph='Enter your department or centre' />
+                    <FormBox name='Branch' type='text' ph='Enter your branch' />
+                    <FormBox name='Semester applied for' type='text' ph='Enter your semester' />
                 </div>
                 <div>
                     <h1 className='wl-st-form-head'>Supervisor Information</h1>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Name</label><br></br>
-                        <input type="text" value="Enter name" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Mobile Number</label><br></br>
-                        <input type="number" value="Enter number" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Email Id</label><br></br>
-                        <input type="email" value="Enter email" className='info-val'></input><br></br>  
-                    </div>
+                    <FormBox name='Name' type='text' ph='Enter name' />
+                    <FormBox name='Email Id' type='email' ph='Enter email' />
+                    <FormBox name='Mobile Number' type='number' ph='Enter number' />
                 </div>
                 <div>
                     <h1 className='wl-st-form-head'>Head of Department (HOD) Information</h1>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Name</label><br></br>
-                        <input type="text" value="Enter name" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Mobile Number</label><br></br>
-                        <input type="number" value="Enter number" className='info-val'></input><br></br> 
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Email Id</label><br></br>
-                        <input type="email" value="Enter email" className='info-val'></input><br></br>
-                    </div>
+                    <FormBox name='Name' type='text' ph='Enter name' />
+                    <FormBox name='Email Id' type='email' ph='Enter email' />
+                    <FormBox name='Mobile Number' type='number' ph='Enter number' />
                 </div>
                 <div>
-                    <button className='btn-save'>Save Changes</button>
-                    <button className='btn-next'>Next</button>
+                    <FormBtn nameLft='Save Changes' nameRgt='Next' />
                 </div>
             </form>
                 

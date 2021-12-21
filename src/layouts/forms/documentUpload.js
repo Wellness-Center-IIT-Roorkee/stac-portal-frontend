@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import './form.css'
+import FormBox from '../../components/forms/formComponent';
+import FormBtn from '../../components/forms/formBtn';
 
 const DocUpload = () => {
     const isAuth = true;
@@ -8,22 +10,12 @@ const DocUpload = () => {
             <div>
             <form className='wl-st-form'>
                 <div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Application Form</label><br></br>
-                        <input type="file" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Extension Letter</label><br></br>
-                        <input type="file" className='info-val'></input><br></br>
-                    </div>
-                    <div className='wl-st-form-box'>
-                        <label className='info-name'>Academic Summary</label><br></br>
-                        <input type="file" className='info-val'></input><br></br>
-                    </div>
+                    <FormBox name='Application Form' type='file' />
+                    <FormBox name='Extension Letter' type='file' />
+                    <FormBox name='Academic Summary' type='file' />
                 </div>
                 <div>
-                    <button className='btn-save'>Save Changes</button>
-                    <button className='btn-next'>Next</button>
+                    <FormBtn nameLft='Save Changes' nameRgt='Next' />
                 </div>
             </form>
                 
