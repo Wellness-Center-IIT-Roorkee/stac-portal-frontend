@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import illustration from '../assets/application/illustration.svg'
 import next from '../assets/application/next.svg'
 import { NavLink } from "react-router-dom";
+import ApplicationForm from '../layouts/forms/applicationForm';
+import DocUpload from '../layouts/forms/documentUpload';
+import FinalSubmit from '../layouts/forms/finalSubmit';
 
-const applicationLayout = () => {
+const ApplicationLayout = () => {
+    const [tab,setTab] = useState(0);
+    const handleChange=()=>{
+        setTab(0);
+    }
+    const handleChange1=()=>{
+        setTab(1);
+    }
+    const handleChange2=()=>{
+        setTab(2);
+    }
+
     const isAuth = true;
     return (
         <>
@@ -23,20 +37,23 @@ const applicationLayout = () => {
             </div>
         </div>
         <div className="wl_sp_lp_main_form_progress">
-            <button className="wl_sp_lp_main_form_btn_filled wl_sp_lp_main_form_btn">Application form</button>
+            <button className={tab===0?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange}>Application Form</button>
             <div className="wl_sp_lp_main_form_line_svg">
                 <div className="wl_sp_lp_main_form_line"></div>
                 <img src={next} alt="" />
             </div>
-            <button className="wl_sp_lp_main_form_btn">Upload documents</button>
+            <button className={tab===1?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange1}>Upload Documents</button>
             <div className="wl_sp_lp_main_form_line_svg">
                 <div className="wl_sp_lp_main_form_line"></div>
                 <img src={next} alt="" />
             </div>
-            <button className="wl_sp_lp_main_form_btn">Submit</button>
+            <button className={tab===2?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange2}>Submit</button>
         </div>
+        {tab===0?<ApplicationForm/>:null}
+        {tab===1?<DocUpload/>:null}
+        {tab===2?<FinalSubmit/>:null}
         </>
     )
 }
 
-export default applicationLayout
+export default ApplicationLayout

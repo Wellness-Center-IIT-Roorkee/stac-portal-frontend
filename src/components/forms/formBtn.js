@@ -1,11 +1,11 @@
 import React from 'react';
+import { Button } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import '../../layouts/forms/form.css'
+
 const FormBtn = (props)=>{
     return(
-        <div>
-            <button className='btn-save'>{props.nameLft}</button>
-            <button className='btn-next'>{props.nameRgt}</button>
-        </div>
+            <Button color='primary' variant={props.type}>{props.name}</Button>
     );
 }
 export default FormBtn

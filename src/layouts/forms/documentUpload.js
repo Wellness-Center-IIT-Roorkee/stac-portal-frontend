@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import './form.css'
 import FormBox from '../../components/forms/formComponent';
 import FormBtn from '../../components/forms/formBtn';
+import { Stack } from '@mui/material';
 
 const DocUpload = () => {
     const isAuth = true;
@@ -15,7 +16,13 @@ const DocUpload = () => {
                     <FormBox name='Academic Summary' type='file' />
                 </div>
                 <div>
-                    <FormBtn nameLft='Save Changes' nameRgt='Next' />
+                <Stack
+                        direction={{ xs: 'column', sm: 'row' }}
+                        spacing={{ xs: 1, sm: 70, md: 120 }}
+                >
+                        <FormBtn name='Save Changes' type='outlined' />
+                        <FormBtn name='Next' type='contained' />
+                </Stack>
                 </div>
             </form>
                 
