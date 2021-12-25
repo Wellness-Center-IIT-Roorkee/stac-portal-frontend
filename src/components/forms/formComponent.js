@@ -4,6 +4,7 @@ const FormBox = (props)=>{
     return(
         <div className='wl-st-form-box'>
             <label className='info-name'>{props.name}</label><br></br>
+            <br></br>
             <input type={props.type} placeholder={props.ph} className='info-val'></input><br></br>
         </div>
     );

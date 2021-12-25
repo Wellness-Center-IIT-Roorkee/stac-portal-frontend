@@ -120,6 +120,17 @@
     transition: 0.2s;
 }
 .wl_sp_lp_main_form_btn_filled{
+    box-sizing: border-box;
+    border-radius: 0.55vmax;
+    padding: 0.8vmax;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1vmax;
+    line-height: 1.68vmax;
+    letter-spacing: 0.1vmax;
+    cursor: pointer;
+    transition: 0.2s;
     background: #F35548;
     color: #fff;
     border: 0.07vmax solid #F35548;
