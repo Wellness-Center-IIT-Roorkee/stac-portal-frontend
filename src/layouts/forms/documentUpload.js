@@ -10,9 +10,9 @@ const DocUpload = () => {
             <div>
             <form className='wl-st-form'>
                 <div>
-                    <FormBox name='Application Form' type='file' />
-                    <FormBox name='Extension Letter' type='file' />
-                    <FormBox name='Academic Summary' type='file' />
+                    <FormBox title='Application Form' type='file' />
+                    <FormBox title='Extension Letter' type='file' />
+                    <FormBox title='Academic Summary' type='file' />
                 </div>
                 <div>
                 <Stack
