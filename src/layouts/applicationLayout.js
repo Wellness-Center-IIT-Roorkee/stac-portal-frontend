@@ -9,16 +9,6 @@ import FinalSubmit from '../layouts/forms/finalSubmit';
 
 const ApplicationLayout = () => {
     const [tab,setTab] = useState(0);
-    const handleChange=()=>{
-        setTab(0);
-    }
-    const handleChange1=()=>{
-        setTab(1);
-    }
-    const handleChange2=()=>{
-        setTab(2);
-    }
-
     const isAuth = true;
     return (
         <>
@@ -37,17 +27,17 @@ const ApplicationLayout = () => {
             </div>
         </div>
         <div className="wl_sp_lp_main_form_progress">
-            <button className={tab===0?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange}>Application Form</button>
+            <button className={tab===0?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={()=>setTab(0)}>Application Form</button>
             <div className="wl_sp_lp_main_form_line_svg">
                 <div className="wl_sp_lp_main_form_line"></div>
                 <img src={next} alt="" />
             </div>
-            <button className={tab===1?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange1}>Upload Documents</button>
+            <button className={tab===1?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={()=>setTab(1)}>Upload Documents</button>
             <div className="wl_sp_lp_main_form_line_svg">
                 <div className="wl_sp_lp_main_form_line"></div>
                 <img src={next} alt="" />
             </div>
-            <button className={tab===2?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={handleChange2}>Submit</button>
+            <button className={tab===2?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={()=>setTab(2)}>Submit</button>
         </div>
         {tab===0?<ApplicationForm/>:null}
         {tab===1?<DocUpload/>:null}

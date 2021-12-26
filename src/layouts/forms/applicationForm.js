@@ -1,30 +1,53 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { NavLink } from "react-router-dom";
 import FormBtn from '../../components/forms/formBtn';
-import FormBox from '../../components/forms/formComponent';
+import {FormBox, FormDisabled} from '../../components/forms/formComponent';
 import './form.css'
-import { Stack } from '@mui/material';
+import { Stack,Select, MenuItem} from '@mui/material';
 
 const ApplicationForm = () => {
-    const isAuth = true;
+    const [inputs, setInputs] = useState({
+        number:"",
+        supervisorEmail:"",
+        hodEmail:"",
+    });
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(inputs);
+    }
     return (
             <div>
             <form className='wl-st-form'>
                 <div>
-                    <FormBox name='Name' type='text' ph='Enter your name' />
-                    <FormBox name='Enrollment Number' type='number' ph='Enter your enrollment number' />
-                    <FormBox name='Email Id' type='email' ph='Enter your email' />
-                    <FormBox name='Mobile Number' type='number' ph='Enter your number' />
-                    <FormBox name='Department/Centre' type='text' ph='Enter your department or centre' />
-                    <FormBox name='Branch' type='text' ph='Enter your branch' />
-                    <FormBox name='Semester applied for' type='text' ph='Enter your semester' />
-                    <FormBox name="Supervisor's Email Id" type='email' ph='Enter email' />
-                    <FormBox name='Head of Dept. Email Id' type='email' ph='Enter email' />
+                    <FormDisabled title='Name'  ph='Enter your name' />
+                    <FormDisabled title='Enrollment Number'  ph='Enter your enrollment number' />
+                    <FormDisabled title='Email Id'  ph='Enter your email' />
+                    <FormDisabled title='Department/Centre'  ph='Enter your department or centre' />
+                    <FormDisabled title='Branch'  ph='Enter your branch' />
+                    <div className='wl-st-form-box'>
+                        <label className='info-name'>Semester applying for </label><br></br>
+                        <br></br>
+                        <Select className='info-val' >
+                            <MenuItem value='Autumn'>Autumn</MenuItem>
+                            <MenuItem value='Spring'>Spring</MenuItem>
+                        </Select>
+                    </div>
+                    <FormBox title='Mobile Number' type='number' ph='Enter your number' name='number' value={inputs.number || ""} onChange={handleChange}/>
+                    <FormBox title="Supervisor's Email Id" type='email' ph='Enter email' name='supervisorEmail' value={inputs.supervisorEmail || ""} onChange={handleChange}/>
+                    <FormBox title='Head of Dept. Email Id' type='email' ph='Enter email' name='hodEmail' value={inputs.hodEmail || ""} onChange={handleChange}/>
+
                     <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 1, sm: 70, md: 120 }}
                     >
-                        <FormBtn name='Save Changes' type='outlined' />
+                        <FormBtn name='Save Changes' type='outlined' onClick={handleSubmit}/>
                         <FormBtn name='Next' type='contained' />
                     </Stack>
                    
