@@ -5,7 +5,6 @@ import FormBtn from '../../components/forms/formBtn';
 import { Stack } from '@mui/material';
 
 const FinalSubmit = () => {
-    const isAuth = true;
     return (
             <div>
             <form className='wl-st-form'>

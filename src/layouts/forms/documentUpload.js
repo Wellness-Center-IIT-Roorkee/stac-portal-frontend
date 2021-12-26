@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import './form.css'
-import FormBox from '../../components/forms/formComponent';
+import {FormBox} from '../../components/forms/formComponent';
 import FormBtn from '../../components/forms/formBtn';
 import { Stack } from '@mui/material';
 
 const DocUpload = () => {
-    const isAuth = true;
     return (
             <div>
             <form className='wl-st-form'>
