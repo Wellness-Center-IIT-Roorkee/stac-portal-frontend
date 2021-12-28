@@ -1,10 +1,15 @@
 import React from 'react'
 import './style.css'
 import illustration from '../assets/home/illustration.svg'
-import { NavLink } from "react-router-dom";
+import { useNavigate} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { oauthUrl } from '../constants'
 
-const landingLayout = () => {
-    const isAuth = true;
+const LandingLayout = () => {
+
+    const navigate = useNavigate();
+    const isLoggedIn = useSelector(state => state.users.isLoggedIn);
+    
     return (
         <div className="wl_sp_lp_main">
             <div className="wl_sp_lp_lft">
@@ -18,9 +23,7 @@ const landingLayout = () => {
                 <p>
                     Et vitae dolor et rerum blanditiis ut harum molestiae? Aut repellat voluptatem et architecto voluptatem est voluptas quae quo quis tenetur.
                 </p>
-                <NavLink to="/application">
-                    <button>{isAuth?"Apply":"Login"}</button>
-                </NavLink>
+                <button onClick={()=>isLoggedIn?navigate('/application'):window.location.assign(oauthUrl)}>Apply</button>
             </div>
             <div className="wl_sp_lp_rgt">
                 <img src={illustration} alt="" />
@@ -29,4 +32,4 @@ const landingLayout = () => {
     )
 }
 
-export default landingLayout
+export default LandingLayout
