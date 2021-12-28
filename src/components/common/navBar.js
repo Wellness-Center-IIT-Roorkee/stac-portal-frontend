@@ -11,7 +11,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../../assets/logo/iitr.png';
 import { makeStyles } from '@mui/styles';
-import './style.css'
+import './style.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { oauthUrl } from '../../constants'
+import { getInitials } from '../../helpers/helperFunctions';
+import { logOut } from '../../actions/userActions';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -37,7 +41,10 @@ function ResponsiveAppBar () {
     setAnchorElUser(null);
   };
 
-  const isAuth = false;
+  const isLoggedIn = useSelector(state => state.users.isLoggedIn);
+  const userName = useSelector(state => state.users.userData.name);
+  const displayPicture = useSelector(state => state.users.userData.display_picture);
+  const dispatch = useDispatch();
 
   return (
     <AppBar position="static" color="default" className={classes.appBar}>
@@ -51,42 +58,41 @@ function ResponsiveAppBar () {
           >
             <Avatar className={classes.iitrLogo} alt="IITR" src={logo} />
           </Typography>
-
-          {isAuth?
-            <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="User" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>:
+            {
+              isLoggedIn &&
+              <Box sx={{ flexGrow: 0 }}>
+              {/* <Tooltip title={null}>
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}> */}
+                  <Avatar alt={getInitials(userName).reduce((a, b) => a + b, '').substr(0, 2)} src={`https://channeli.in${displayPicture}`} />
+                {/* </IconButton>
+              </Tooltip> */}
+              {/* <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu> */}
+            </Box>
+            }
           <div className="wl_sp_nav_btns_parent">
-            <button className="wl_sp_nav_btns_login">Login</button>
-            <button className="wl_sp_nav_btns_signup">Sign Up</button>
+              <button onClick={()=>isLoggedIn? dispatch(logOut()) :window.location.assign(oauthUrl)} className="wl_sp_nav_btns_signup">{isLoggedIn?"Logout":"Login"}</button>
           </div>
-          }
         </Toolbar>
       </Container>
     </AppBar>
