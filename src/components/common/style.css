@@ -9,7 +9,7 @@
     border: 2.5px solid #4649EE;
     border-radius: 15px;
     background: none;
-    padding: 0.8vmax 2.1vmax;
+    padding: 0.6vmax 1.8vmax;
     font-family: SF Pro Display;
     font-style: normal;
     font-weight: normal;
@@ -27,7 +27,7 @@
     border: 2.5px solid #4649EE;
     border-radius: 15px;
     background: #4649EE;
-    padding: 0.8vmax 2.1vmax;
+    padding: 0.6vmax 1.8vmax;
     font-family: SF Pro Display;
     font-style: normal;
     font-weight: normal;
@@ -42,10 +42,12 @@
     box-shadow: 0 0 0.25vmax #000;
 }
 .wl_sp_nav_btns_signup:hover{
-    box-shadow: 0 0 0.25vmax #000;
+    /* box-shadow: 0 0 0.25vmax #000; */
+    background: none;
+    color: #4649EE;
 }
 .wl_sp_nav_btns_signup:active{
-    filter: brightness(70%);
+    background: #4649ee63;
 }
 .wl_sp_nav_btns_login:active{
     background: #4649ee4d;
