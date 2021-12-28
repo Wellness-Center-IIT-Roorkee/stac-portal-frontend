@@ -2,7 +2,9 @@ import React from 'react'
 import DefaultLayout from '../layouts/defaultLayout';
 import ApplicationLayout from '../layouts/applicationLayout';
 
-const application = () => {
+
+
+const Application = () => {
     return (
         <DefaultLayout>
             <ApplicationLayout/>
@@ -10,4 +12,4 @@ const application = () => {
     )
 }
 
-export default application
+export default Application
