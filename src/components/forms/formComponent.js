@@ -6,7 +6,7 @@ const FormDisabled = (props)=>{
         <div className='wl-st-form-box'>
             <label className='info-name'>{props.title}</label><br></br>
             <br></br>
-            <Input disabled className='info-val' placeholder={props.ph} />
+            <Input value={props.value} disabled className='info-val' placeholder={props.ph} />
         </div>
     );
 }

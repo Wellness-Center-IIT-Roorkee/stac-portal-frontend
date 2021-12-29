@@ -9,6 +9,7 @@ const LandingLayout = () => {
 
     const navigate = useNavigate();
     const isLoggedIn = useSelector(state => state.users.isLoggedIn);
+    const userData = useSelector(state => state.users.userData);
     
     return (
         <div className="wl_sp_lp_main">
@@ -23,7 +24,7 @@ const LandingLayout = () => {
                 <p>
                     Et vitae dolor et rerum blanditiis ut harum molestiae? Aut repellat voluptatem et architecto voluptatem est voluptas quae quo quis tenetur.
                 </p>
-                <button onClick={()=>isLoggedIn?navigate('/application'):window.location.assign(oauthUrl)}>Apply</button>
+                <button onClick={()=>isLoggedIn?navigate(`/${userData.role==="student"?"application":"entries"}`):window.location.assign(oauthUrl)}>Apply</button>
             </div>
             <div className="wl_sp_lp_rgt">
                 <img src={illustration} alt="" />
