@@ -46,6 +46,7 @@ const ApplicationForm = () => {
                     <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 1, sm: 70, md: 120 }}
+                        justifyContent="center"
                     >
                         <FormBtn name='Save Changes' type='outlined' onClick={handleSubmit}/>
                         <FormBtn name='Next' type='contained' />
