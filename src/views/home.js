@@ -35,9 +35,12 @@ const Home = () => {
                             <RecentApplication application={{name:`Application ${index+1}`,date:`${getFormattedDateTime(data.submission_time)}`,status:`${data.status==="app"?"Approved":"Pending"}`}} />
                         )
                     }))
-                    :
-                    <Loader/>
-                }
+                    :(
+                        isRecentApplicationDataPending?
+                        <Loader/>:
+                        <h4 className="no_app_to_show">No applications to show</h4>
+                        )
+                    }
                 </div>
             }
         </DefaultLayout>
