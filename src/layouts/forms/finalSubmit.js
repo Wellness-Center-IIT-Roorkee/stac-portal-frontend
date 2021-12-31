@@ -19,6 +19,7 @@ const FinalSubmit = () => {
                 <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 1, sm: 70, md: 120 }}
+                        justifyContent="center"
                 >
                         <FormBtn name='Go Back' type='outlined' />
                         <FormBtn name='Submit' type='contained' />
