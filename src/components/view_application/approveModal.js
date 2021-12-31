@@ -17,8 +17,6 @@ const style = {
   };
 
 const AppModal = (props)=>{
-    const userData = useSelector(state => state.users.userData);
-    const applicationData = useSelector(state => state.recentApplications.applicationData);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -33,15 +31,15 @@ const AppModal = (props)=>{
             >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Name: {userData.name}
+                    Name: 
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Enrollment Number: {userData.student.enrollment_number}<br/>
-                Email Id: {userData.email}<br/>
-                Department/Centre: {userData.student.department}<br/>
-                Branch: {userData.student.branch}<br/>
-                Date Applied: {applicationData.date}<br/>
-                Status: {applicationData.status}<br/>
+                Enrollment Number: <br/>
+                Email Id: <br/>
+                Department/Centre: <br/>
+                Branch: <br/>
+                Date Applied: <br/>
+                Status: <br/>
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 1, sm: 10, md: 10 }}

@@ -24,6 +24,14 @@ const ViewForm=()=> {
         createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
         createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
         createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
+        createData('Adarsh Priyadarshi', 20411002, 'adarsh_p@ce.iitr.ac.in', '','Pending'),
       ];
   return (
     <TableContainer component={Paper} sx={{align:'center'}}>
