@@ -18,6 +18,7 @@ const DocUpload = () => {
                 <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         spacing={{ xs: 1, sm: 70, md: 120 }}
+                        justifyContent="center"
                 >
                         <FormBtn name='Save Changes' type='outlined' />
                         <FormBtn name='Next' type='contained' />

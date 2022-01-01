@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getRecentAppData} from '../actions/recentApplicationActions'
 import {getFormattedDateTime} from '../helpers/helperFunctions'
 import Loader from '../components/common/loader'
+import AppModal from '../components/view_application/approveModal';
+import SearchBar from '../components/view_application/searchBar';
 
 const Home = () => {
     const isLoggedIn = useSelector(state => state.users.isLoggedIn);
