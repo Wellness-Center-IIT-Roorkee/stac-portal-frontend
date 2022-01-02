@@ -24,7 +24,7 @@ const LandingLayout = () => {
                 <p>
                     Et vitae dolor et rerum blanditiis ut harum molestiae? Aut repellat voluptatem et architecto voluptatem est voluptas quae quo quis tenetur.
                 </p>
-                <button onClick={()=>isLoggedIn?navigate(`/${userData.role==="student"?"application":"entries"}`):window.location.assign(oauthUrl)}>Apply</button>
+                <button onClick={()=>isLoggedIn?navigate(`/${userData.role==="student"?"application":"entries"}`):window.location.assign(oauthUrl)}>{isLoggedIn?(userData.role==="student"?"Apply":"Dashboard"):"Login"}</button>
             </div>
             <div className="wl_sp_lp_rgt">
                 <img src={illustration} alt="" />
