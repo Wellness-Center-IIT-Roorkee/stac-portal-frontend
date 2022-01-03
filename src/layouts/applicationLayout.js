@@ -2,14 +2,25 @@ import React, { useState } from 'react'
 import './style.css'
 import illustration from '../assets/application/illustration.svg'
 import next from '../assets/application/next.svg'
-import { NavLink } from "react-router-dom";
 import ApplicationForm from '../layouts/forms/applicationForm';
 import DocUpload from '../layouts/forms/documentUpload';
 import FinalSubmit from '../layouts/forms/finalSubmit';
+import { useSelector } from 'react-redux';
 
 const ApplicationLayout = () => {
     const [tab,setTab] = useState(0);
-    const isAuth = true;
+    const userData = useSelector(state => state.users.userData);
+    const initValues = {
+        phone_number: userData?.phone_number,
+        applied_semester: null,
+        supervisor_email: "",
+        hod_email: "",
+        application_form: null,
+        extension_letter: null,
+        academic_summary: null,
+      };
+    const [inputs, setInputs] = useState(initValues);
+    const props={setTab,inputs,setInputs};
     return (
         <>
         <div className="wl_sp_lp_main2">
@@ -39,9 +50,10 @@ const ApplicationLayout = () => {
             </div>
             <button className={tab===2?"wl_sp_lp_main_form_btn_filled":"wl_sp_lp_main_form_btn"} onClick={()=>setTab(2)}>Submit</button>
         </div>
-        {tab===0?<ApplicationForm/>:null}
-        {tab===1?<DocUpload/>:null}
-        {tab===2?<FinalSubmit/>:null}
+        
+        {tab===0?<ApplicationForm {...props}/>:null}
+        {tab===1?<DocUpload {...props}/>:null}
+        {tab===2?<FinalSubmit {...props}/>:null}
         </>
     )
 }
