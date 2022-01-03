@@ -5,7 +5,7 @@ import '../../layouts/forms/form.css'
 
 const FormBtn = (props)=>{
     return(
-            <Button color='primary' variant={props.type}>{props.name}</Button>
+            <Button color='primary' variant={props.variant} type={props.type} onClick={props.func}>{props.name}</Button>
     );
 }
 export default FormBtn

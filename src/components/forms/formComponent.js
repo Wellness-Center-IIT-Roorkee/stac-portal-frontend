@@ -15,7 +15,7 @@ const FormBox = (props)=>{
         <div className='wl-st-form-box'>
             <label className='info-name'>{props.title}</label><br></br>
             <br></br>
-            <Input onChange={props.onChange} defaultValue={props.value} type={props.type} className='info-val' placeholder={props.ph} />
+            <Input onChange={props.onChange} defaultValue={props.value} name={props.name} type={props.type} className='info-val' placeholder={props.ph} />
         </div>
     );
 }

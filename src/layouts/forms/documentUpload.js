@@ -1,18 +1,24 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
 import './form.css'
 import {FormBox} from '../../components/forms/formComponent';
 import FormBtn from '../../components/forms/formBtn';
 import { Stack } from '@mui/material';
 
-const DocUpload = () => {
+
+const DocUpload = ({setTab,inputs,setInputs}) => {
+    const handleChange = (e)=>{
+        setInputs({
+            ...inputs,
+            [e.target.name]:e.target.files[0],
+        })
+    }
     return (
             <div>
             <form className='wl-st-form'>
                 <div>
-                    <FormBox title='Application Form' type='file' />
-                    <FormBox title='Extension Letter' type='file' />
-                    <FormBox title='Academic Summary' type='file' />
+                    <FormBox title='Application Form' name='application_form'  type='file' onChange={handleChange}/>
+                    <FormBox title='Extension Letter' name='extension_letter'  type='file' onChange={handleChange}/>
+                    <FormBox title='Academic Summary' name='academic_summary'  type='file' onChange={handleChange}/>
                 </div>
                 <div>
                 <Stack
@@ -20,8 +26,8 @@ const DocUpload = () => {
                         spacing={{ xs: 1, sm: 70, md: 120 }}
                         justifyContent="center"
                 >
-                        <FormBtn name='Save Changes' type='outlined' />
-                        <FormBtn name='Next' type='contained' />
+                        <FormBtn name='Go Back' variant='outlined' func={()=>setTab(0)}/>
+                        <FormBtn name='Next' variant='contained' func={()=>setTab(2)}/>
                 </Stack>
                 </div>
             </form>

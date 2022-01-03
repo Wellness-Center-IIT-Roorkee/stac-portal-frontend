@@ -5,4 +5,5 @@ export const USER_APIS = {
 };
 export const APPLICATION_APIS = {
   recentApplication: 'stac/application/',
+  newApplication: 'stac/application/',
 };
