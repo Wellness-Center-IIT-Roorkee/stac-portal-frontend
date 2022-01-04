@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const Application = () => {
   const [tab, setTab] = useState(0)
-  const userData = useSelector(state => state.users.userData)
+  const userData = useSelector(state => state.user.userData)
   const initValues = {
     phone_number: userData?.phone_number,
     applied_semester: null,

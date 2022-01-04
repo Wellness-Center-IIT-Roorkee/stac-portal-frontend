@@ -2,22 +2,22 @@ import React, { useEffect } from 'react'
 import LandingLayout from '../components/landingLayout'
 import RecentApplication from '../components/common/recentApplication'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRecentAppData } from '../actions/recentApplicationActions'
+import { getApplications } from '../actions/applicationActions'
 import { getFormattedDateTime } from '../helpers/helperFunctions'
 import Loader from '../components/common/loader'
 
 const Home = () => {
-  const isLoggedIn = useSelector(state => state.users.isLoggedIn)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const applicationData = useSelector(
-    state => state.recentApplications.applicationData
+    state => state.application.applications
   )
   const isRecentApplicationDataPending = useSelector(
-    state => state.recentApplications.isRecentApplicationDataPending
+    state => state.application.getApplicationsPending
   )
   const dispatch = useDispatch()
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(getRecentAppData())
+      dispatch(getApplications())
       return
     }
   }, [isLoggedIn])

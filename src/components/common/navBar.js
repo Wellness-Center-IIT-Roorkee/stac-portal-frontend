@@ -37,10 +37,10 @@ function ResponsiveAppBar () {
   //   setAnchorElUser(null)
   // }
 
-  const isLoggedIn = useSelector(state => state.users.isLoggedIn)
-  const userName = useSelector(state => state.users.userData.name)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const userName = useSelector(state => state.user.userData.name)
   const displayPicture = useSelector(
-    state => state.users.userData.display_picture
+    state => state.user.userData.display_picture
   )
   const dispatch = useDispatch()
 
