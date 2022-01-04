@@ -16,8 +16,8 @@ const NewComponent = ({ component: Component, ...restProps }) => {
 const PrivateRoute = () => {
   const [authenticationPending, setAuthenticationPending] = useState(true)
   const firstUpdate = useRef(true)
-  const isLoggedIn = useSelector(state => state.users.isLoggedIn)
-  const getUserDataPending = useSelector(state => state.users.getUserDataPending)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const getUserDataPending = useSelector(state => state.user.getUserDataPending)
 
   useLayoutEffect(() => {
     if (firstUpdate.current) {

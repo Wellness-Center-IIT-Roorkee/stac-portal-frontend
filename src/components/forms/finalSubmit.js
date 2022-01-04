@@ -2,7 +2,7 @@ import React from 'react'
 import '../../assets/css/forms/form.css'
 import FormBtn from '../../components/forms/formBtn'
 import { Stack } from '@mui/material'
-import { setNewAppData } from '../../actions/applicationFormActions'
+import { createApplication } from '../../actions/applicationActions'
 import { useDispatch } from 'react-redux'
 
 const FinalSubmit = ({ setTab, inputs }) => {
@@ -11,7 +11,7 @@ const FinalSubmit = ({ setTab, inputs }) => {
     const formData = new FormData()
     e.preventDefault()
     Object.keys(inputs).forEach(input => formData.append(input, inputs[input]))
-    dispatch(setNewAppData(formData))
+    dispatch(createApplication(formData))
   }
   return (
     <div>

@@ -7,7 +7,7 @@ import { Stack, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
 import { useSelector } from 'react-redux'
 
 const ApplicationForm = ({ setTab, inputs, setInputs }) => {
-  const userData = useSelector(state => state.users.userData)
+  const userData = useSelector(state => state.user.userData)
   const navigate = useNavigate()
   const handleChange = e => {
     setInputs({

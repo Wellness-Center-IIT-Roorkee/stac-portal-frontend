@@ -5,14 +5,14 @@ import { privateRoutes, publicRoutes } from './routes'
 import Home from './views/home'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInfo } from './actions/userActions'
-import { getRecentAppData } from './actions/recentApplicationActions'
+import { getApplications } from './actions/applicationActions'
 
 function App () {
   const dispatch = useDispatch()
-  const isLoginPending = useSelector(state => state.users.isLoginPending)
+  const isLoginPending = useSelector(state => state.user.isLoginPending)
   React.useEffect(() => {
     dispatch(getInfo())
-    dispatch(getRecentAppData())
+    dispatch(getApplications())
   }, [isLoginPending])
 
   return (

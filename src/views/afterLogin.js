@@ -10,8 +10,8 @@ const AfterLogin = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const isLoggedIn = useSelector(state => state.users.isLoggedIn)
-  const isLoginPending = useSelector(state => state.users.isLoginPending)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const isLoginPending = useSelector(state => state.user.isLoginPending)
   const firstUpdate = useRef(true)
 
   useEffect(() => {

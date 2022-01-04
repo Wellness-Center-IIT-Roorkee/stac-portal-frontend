@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
 import userReducer from './userReducer';
-import recentApplicationReducer from './recentApplicationReducer'
-import newApplicationReducer from './applicationFormReducer';
+import applicationReducer from './applicationReducer'
 
 const appReducer = combineReducers({
-  users: userReducer,
-  recentApplications : recentApplicationReducer,
-  newApplications: newApplicationReducer,
+  user: userReducer,
+  application : applicationReducer,
 });
 
 const rootReducer = (state, action) => {

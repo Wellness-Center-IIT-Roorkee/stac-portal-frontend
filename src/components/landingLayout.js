@@ -7,8 +7,8 @@ import { oauthUrl } from '../constants'
 
 const LandingLayout = () => {
   const navigate = useNavigate()
-  const isLoggedIn = useSelector(state => state.users.isLoggedIn)
-  const userData = useSelector(state => state.users.userData)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const userData = useSelector(state => state.user.userData)
 
   return (
     <div className='wl_sp_lp_main'>
