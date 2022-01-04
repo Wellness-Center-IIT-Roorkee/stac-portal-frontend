@@ -1,15 +1,8 @@
 import React from 'react'
-import DefaultLayout from '../layouts/defaultLayout';
-import ApplicationLayout from '../layouts/applicationLayout';
-
-
+import ApplicationLayout from '../layouts/applicationLayout'
 
 const Application = () => {
-    return (
-        <DefaultLayout>
-            <ApplicationLayout/>
-        </DefaultLayout>
-    )
+  return <ApplicationLayout />
 }
 
 export default Application

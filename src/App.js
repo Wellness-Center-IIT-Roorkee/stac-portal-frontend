@@ -1,41 +1,53 @@
-import React from 'react';
-import { Routes, Route, Navigate, BrowserRouter as Router } from 'react-router-dom'
-import DefaultLayout from './layouts/defaultLayout';
-import ProtectedRoute from './ProtectedRoute';
+import React from 'react'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import PrivateRoute from './PrivateRoute'
+import { privateRoutes, publicRoutes } from './routes'
 import Home from './views/home'
-import routes from './routes';
-import Application from './views/application'
-import AfterLogin from './views/afterLogin'
-import AdminView from './views/adminView';
-import { useDispatch, useSelector } from 'react-redux';
-import { getInfo } from './actions/userActions';
-import { getRecentAppData } from './actions/recentApplicationActions';
+import { useDispatch, useSelector } from 'react-redux'
+import { getInfo } from './actions/userActions'
+import { getRecentAppData } from './actions/recentApplicationActions'
 
-function App() {
-  const dispatch = useDispatch();
-  const isLoginPending = useSelector(state => state.users.isLoginPending);
-  const userData = useSelector(state => state.users.userData);
+function App () {
+  const dispatch = useDispatch()
+  const isLoginPending = useSelector(state => state.users.isLoginPending)
   React.useEffect(() => {
-    dispatch(getInfo());
-    dispatch(getRecentAppData());
-  }, [isLoginPending]);
+    dispatch(getInfo())
+    dispatch(getRecentAppData())
+  }, [isLoginPending])
 
-  const isAuth = true
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
         <Routes>
-        <Route exact path='/' element={<ProtectedRoute isAuthenticated={isAuth} />}>
-          <Route exact path='/' element={<Home />}/>
-          <Route exact path='/application' element={userData.role==="student"&&<Application />}/>
-          <Route exact path='/auth' element={<AfterLogin />}/>
-          <Route exact path='/entries' element={userData.role==="student"?<Navigate to="/"/>:<AdminView />}/>
-          <Route path='*' element={<Home />}/>
-        </Route>
+          {publicRoutes.map((route, index) => {
+            const { layout: Layout } = route
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                element={<Layout>{route.component}</Layout>}
+              />
+            )
+          })}
+          <Route path='/' element={<PrivateRoute />}>
+            {privateRoutes.map((route, index) => {
+              const { layout: Layout } = route
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  element={<Layout>{route.component}</Layout>}
+                />
+              )
+            })}
+          </Route>
+          <Route path='*' element={<Home />} />
         </Routes>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
