@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import LandingLayout from '../layouts/landingLayout'
+import LandingLayout from '../components/landingLayout'
 import RecentApplication from '../components/common/recentApplication'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRecentAppData } from '../actions/recentApplicationActions'
