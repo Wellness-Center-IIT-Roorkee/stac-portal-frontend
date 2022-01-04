@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../components/common/navBar';
-import './style.css'
+import '../assets/css/common/layoutStyle.css'
+
 
 const DefaultLayout = ({ children }) => {
   return (
