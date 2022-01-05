@@ -11,7 +11,7 @@ import {
   GET_APPLICATION_DETAIL_API_ERROR,
   IS_GET_APPLICATION_DETAIL_PENDING,
   UPDATE_STATUS_API_ERROR,
-  IS_UPDATE_STATUS_PENDING,
+  IS_UPDATE_STATUS_PENDING
 } from './applicationActionTypes'
 
 export const getApplications = () => {
@@ -22,11 +22,12 @@ export const getApplications = () => {
       .get(url)
       .then(res => {
         dispatch(apiDispatch(SET_APPLICATIONS, res.data))
-        dispatch(apiDispatch(IS_GET_APPLICATIONS_PENDING, false))
       })
       .catch(err => {
         dispatch(apiDispatch(SET_APPLICATIONS, []))
         dispatch(apiDispatch(GET_APPLICATIONS_API_ERROR, err.response))
+      })
+      .finally(() => {
         dispatch(apiDispatch(IS_GET_APPLICATIONS_PENDING, false))
       })
   }
@@ -38,11 +39,10 @@ export const createApplication = formData => {
     dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, true))
     apiClient
       .post(url, formData)
-      .then(res => {
-        dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, false))
-      })
       .catch(err => {
         dispatch(apiDispatch(CREATE_APPLICATION_API_ERROR, err.response))
+      })
+      .finally(() => {
         dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, false))
       })
   }
@@ -56,28 +56,29 @@ export const getApplicationDetail = id => {
       .get(url)
       .then(res => {
         dispatch(apiDispatch(SET_APPLICATION_DETAIL, res.data))
-        dispatch(apiDispatch(IS_GET_APPLICATION_DETAIL_PENDING, false))
       })
       .catch(err => {
         dispatch(apiDispatch(SET_APPLICATION_DETAIL, {}))
         dispatch(apiDispatch(GET_APPLICATION_DETAIL_API_ERROR, err.response))
+      })
+      .finally(() => {
         dispatch(apiDispatch(IS_GET_APPLICATION_DETAIL_PENDING, false))
       })
   }
 }
 
 export const updateApplicationStatus = id => {
-    const url = `${APPLICATION_APIS.application}${id}/change_status/`
-    return dispatch => {
-      dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, true))
-      apiClient
-        .get(url)
-        .then(res => {
-          dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
-        })
-        .catch(err => {
-          dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
-          dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
-        })
-    }
+  const url = `${APPLICATION_APIS.application}${id}/change_status/`
+  return dispatch => {
+    dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, true))
+    apiClient
+      .get(url)
+      .catch(err => {
+        dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
+        dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
+      })
+      .finally(() => {
+        dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
+      })
+  }
 }

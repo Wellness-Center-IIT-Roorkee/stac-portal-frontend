@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
-import {
-  Button,
-  Stack,
-  Input,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl
-} from '@mui/material'
+import { Button, Stack, Input } from '@mui/material'
 import '../../assets/css/forms/form.css'
 
-const SearchBar = () => {
-  const [sort, setSort] = useState('')
+const SearchBar = ({ applicationData, setData }) => {
+  const [search, setSearch] = useState('')
 
-  const handleChange = event => {
-    setSort(event.target.value)
+  const filterData = () => {
+    setData(
+      applicationData.filter(rowData => {
+        const student = rowData.student
+        return (
+          student.name.toLowerCase().includes(search.toLowerCase()) ||
+          student.email.toLowerCase().includes(search.toLowerCase()) ||
+          student.enrollment_number.includes(search)
+        )
+      })
+    )
   }
+
   return (
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
@@ -26,21 +28,16 @@ const SearchBar = () => {
         sx={{ width: 420 }}
         placeholder='Search name, enrollment number, email id'
         variant='outlined'
+        value={search}
+        onChange={e => setSearch(e.target.value)}
       />
-      <Button sx={{ bgcolor: 'black' }} variant='contained'>
+      <Button
+        sx={{ bgcolor: 'black' }}
+        variant='contained'
+        onClick={() => filterData()}
+      >
         Search
       </Button>
-      <FormControl variant='standard'>
-        <InputLabel id='demo-simple-select-standard-label'>Sort By</InputLabel>
-        <Select
-          value={sort}
-          onChange={handleChange}
-          sx={{ width: 100, height: 40 }}
-        >
-          <MenuItem value='Date'>Date</MenuItem>
-          <MenuItem value='Name'>Name</MenuItem>
-        </Select>
-      </FormControl>
     </Stack>
   )
 }
