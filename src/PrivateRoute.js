@@ -8,6 +8,7 @@ import React, {
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 import Loader from './components/common/loader'
+import { STUDENT, ADMIN, FACULTY } from './constants/roles'
 
 const NewComponent = ({ component: Component, ...restProps }) => {
   return <Component {...restProps} />
@@ -18,6 +19,8 @@ const PrivateRoute = () => {
   const firstUpdate = useRef(true)
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const getUserDataPending = useSelector(state => state.user.getUserDataPending)
+  const role = useSelector(state => state.user.userData?.role)
+  const allowedRoles = [STUDENT, ADMIN, FACULTY]
 
   useLayoutEffect(() => {
     if (firstUpdate.current) {
@@ -36,8 +39,8 @@ const PrivateRoute = () => {
   }, [isLoggedIn])
 
   return authenticationPending === true ? (
-    <Loader/>
-  ) : isLoggedIn ? (
+    <Loader />
+  ) : isLoggedIn && allowedRoles.includes(role) ? (
     <Suspense fallback={<div className='text-primary' />}>
       <NewComponent component={Outlet} />
     </Suspense>

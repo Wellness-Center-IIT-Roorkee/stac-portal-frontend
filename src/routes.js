@@ -13,7 +13,7 @@ export const privateRoutes = [
     component: <Application />
   },
   {
-    path: '/entries',
+    path: '/fac',
     exact: true,
     layout: DefaultLayout,
     component: <AdminView />

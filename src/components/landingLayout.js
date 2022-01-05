@@ -34,7 +34,7 @@ const LandingLayout = () => {
           onClick={() =>
             isLoggedIn
               ? navigate(
-                  `/${userData.role === 'student' ? 'application' : 'entries'}`
+                  `/${userData.role === 'student' ? 'application' : 'fac'}`
                 )
               : window.location.assign(oauthUrl)
           }
@@ -42,7 +42,7 @@ const LandingLayout = () => {
           {isLoggedIn
             ? userData.role === 'student'
               ? 'Apply'
-              : 'Dashboard'
+              : 'View Applications'
             : 'Login'}
         </button>
       </div>

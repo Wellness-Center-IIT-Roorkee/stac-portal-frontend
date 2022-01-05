@@ -5,16 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getApplications } from '../actions/applicationActions'
 import { getFormattedDateTime } from '../helpers/helperFunctions'
 import Loader from '../components/common/loader'
+import { STUDENT } from '../constants/roles'
 
 const Home = () => {
+  const dispatch = useDispatch()
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-  const applicationData = useSelector(
-    state => state.application.applications
-  )
+  const role = useSelector(state => state.user.userData?.role)
+  const applicationData = useSelector(state => state.application.applications)
   const isRecentApplicationDataPending = useSelector(
     state => state.application.getApplicationsPending
   )
-  const dispatch = useDispatch()
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(getApplications())
@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <>
       <LandingLayout />
-      {isLoggedIn && (
+      {isLoggedIn && role === STUDENT && (
         <div onClick={() => console.log(applicationData[0])}>
           <RecentApplication
             isHeading={true}
