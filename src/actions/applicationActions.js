@@ -15,6 +15,7 @@ import {
   UPDATE_STATUS_API_ERROR,
   IS_UPDATE_STATUS_PENDING
 } from './applicationActionTypes'
+import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from './toastActions'
 
 export const getApplications = () => {
   const url = APPLICATION_APIS.application
@@ -35,7 +36,7 @@ export const getApplications = () => {
   }
 }
 
-export const createApplication = formData => {
+export const createApplication = (formData, call) => {
   const url = APPLICATION_APIS.application
   return dispatch => {
     dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, true))
@@ -43,9 +44,14 @@ export const createApplication = formData => {
       .post(url, formData)
       .catch(err => {
         dispatch(apiDispatch(CREATE_APPLICATION_API_ERROR, err.response))
+        dispatch(toastErrorMessage('Some Error occured in Creating Application'))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, false))
+        dispatch(toastSuccessMessage('Application Created Successfully'))
+        setTimeout(() => {
+          call();
+        }, 1000);
       })
   }
 }
@@ -75,7 +81,7 @@ export const getApplicationDetail = (
   }
 }
 
-export const updateApplication = ({ id, formData: payload }) => {
+export const updateApplication = ({ id, formData: payload, call }) => {
   const url = `${APPLICATION_APIS.application}${id}/`
   return dispatch => {
     dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, true))
@@ -83,9 +89,14 @@ export const updateApplication = ({ id, formData: payload }) => {
       .patch(url, payload)
       .catch(err => {
         dispatch(apiDispatch(UPDATE_APPLICATION_API_ERROR, err.response))
+        dispatch(toastErrorMessage('Some Error occured in Updating Application'))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, false))
+        dispatch(toastSuccessMessage('Application Updated Successfully'))
+        setTimeout(() => {
+          call();
+        }, 1000);
       })
   }
 }
@@ -101,9 +112,11 @@ export const updateApplicationStatus = ({ id, ...payload }) => {
       })
       .catch(err => {
         dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
+        dispatch(toastErrorMessage('Some Error occured in Updating Status'))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
+        dispatch(toastSuccessMessage('Status Updated Successfully'))
       })
   }
 }

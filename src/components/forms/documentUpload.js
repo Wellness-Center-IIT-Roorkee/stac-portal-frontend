@@ -3,13 +3,24 @@ import '../../assets/css/forms/form.css'
 import { FormBox } from './formComponent'
 import FormBtn from './formBtn'
 import { Stack } from '@mui/material'
+import { useSelector, useDispatch } from 'react-redux'
+import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from '../../actions/toastActions'
+
 
 const DocUpload = ({ setTab, inputs, setInputs }) => {
+  const dispatch = useDispatch()
   const handleChange = e => {
     setInputs({
       ...inputs,
       [e.target.name]: e.target.files[0]
     })
+  }
+  const nextFunc=()=>{
+    if(inputs?.application_form !== null && inputs?.extension_letter !== null && inputs?.academic_summary !== null){
+      setTab(2);
+    }else{
+      dispatch(toastWarningMessage('Please upload mandatory documents'));
+    }
   }
   return (
     <div>
@@ -41,7 +52,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
             justifyContent='center'
           >
             <FormBtn name='Go Back' variant='outlined' func={() => setTab(0)} />
-            <FormBtn name='Next' variant='contained' func={() => setTab(2)} />
+            <FormBtn name='Next' variant='contained' func={() => nextFunc()} />
           </Stack>
         </div>
       </form>

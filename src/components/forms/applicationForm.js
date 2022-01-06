@@ -4,16 +4,25 @@ import FormBtn from './formBtn'
 import { FormBox, FormDisabled } from './formComponent'
 import '../../assets/css/forms/form.css'
 import { Stack, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from '../../actions/toastActions'
 
 const ApplicationForm = ({ setTab, inputs, setInputs }) => {
   const userData = useSelector(state => state.user.userData)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleChange = e => {
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value
     })
+  }
+  const nextFunc=()=>{
+    if(inputs?.phone_number?.length && inputs?.applied_semester?.length && inputs?.hod_email?.length && inputs?.supervisor_email?.length){
+      setTab(1);
+    }else{
+      dispatch(toastWarningMessage('Please fill mandatory fields'));
+    }
   }
 
   return (
@@ -98,7 +107,7 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
               variant='outlined'
               func={() => navigate('/')}
             />
-            <FormBtn name='Next' variant='contained' func={() => setTab(1)} />
+            <FormBtn name='Next' variant='contained' func={() => nextFunc()} />
           </Stack>
         </div>
       </form>

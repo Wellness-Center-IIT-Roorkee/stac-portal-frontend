@@ -21,6 +21,25 @@ const Application = () => {
   }
   const [inputs, setInputs] = useState(initValues)
   const props = { setTab, inputs, setInputs }
+  const handleClick=(x)=>{
+    switch (x) {
+      case 0:
+        setTab(0)
+        break;
+      case 1:
+        if(inputs?.phone_number?.length && inputs?.applied_semester?.length && inputs?.hod_email?.length && inputs?.supervisor_email?.length){
+          setTab(1);
+        }
+        break;
+      case 2:
+        if(inputs?.application_form !== null && inputs?.extension_letter !== null && inputs?.academic_summary !== null){
+          setTab(2);
+        }
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <>
       <div className='wl_sp_lp_main2'>
@@ -49,7 +68,7 @@ const Application = () => {
               ? 'wl_sp_lp_main_form_btn_filled'
               : 'wl_sp_lp_main_form_btn'
           }
-          onClick={() => setTab(0)}
+          onClick={() => handleClick(0)}
         >
           Application Form
         </button>
@@ -63,7 +82,7 @@ const Application = () => {
               ? 'wl_sp_lp_main_form_btn_filled'
               : 'wl_sp_lp_main_form_btn'
           }
-          onClick={() => setTab(1)}
+          onClick={() => handleClick(1)}
         >
           Upload Documents
         </button>
@@ -77,7 +96,7 @@ const Application = () => {
               ? 'wl_sp_lp_main_form_btn_filled'
               : 'wl_sp_lp_main_form_btn'
           }
-          onClick={() => setTab(2)}
+          onClick={() => handleClick(2)}
         >
           Submit
         </button>
