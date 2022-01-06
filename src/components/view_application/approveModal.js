@@ -1,58 +1,90 @@
-import React from 'react'
-import { Button, Box, Modal, Typography, Stack } from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button, Grid, Link } from '@mui/material'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogTitle from '@mui/material/DialogTitle'
+import {
+  getApplicationDetail,
+  updateApplicationStatus
+} from '../../actions/applicationActions'
 import '../../assets/css/forms/form.css'
+import { formMap } from '../../constants/formMap'
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4
-}
-
-const AppModal = props => {
-  const [open, setOpen] = React.useState(false)
+const AppModal = ({ applicationID }) => {
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const dispatch = useDispatch()
+  const applicationDetail = useSelector(
+    state => state.application.applicationDetail
+  )
+  const formFields = formMap(applicationDetail)
+
+  useEffect(() => {
+    if (open) {
+      dispatch(getApplicationDetail(applicationID))
+      return
+    }
+  }, [open, applicationID])
+
+  const changeStatus = status => {
+    dispatch(updateApplicationStatus({ id: applicationID, status }))
+    handleClose()
+  }
+
   return (
     <div>
-      <Button onClick={handleOpen}>View Full Application</Button>
-      <Modal
+      <Button onClick={handleOpen}>View Application</Button>
+      <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        sx={{
+          '& .MuiPaper-root': { width: '40%', minWidth: 300, overflow: 'auto' }
+        }}
       >
-        <Box sx={style}>
-          <Typography id='modal-modal-title' variant='h6' component='h2'>
-            Name:
-          </Typography>
-          <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-            Enrollment Number: <br />
-            Email Id: <br />
-            Department/Centre: <br />
-            Branch: <br />
-            Date Applied: <br />
-            Status: <br />
-          </Typography>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={{ xs: 1, sm: 10, md: 10 }}
-            justifyContent='center'
+        <DialogTitle>Application</DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2}>
+            {formFields.map((field, index) => (
+              <React.Fragment key={index}>
+                <Grid item xs={5} style={{ fontWeight: 600 }}>
+                  {field.displayName}:
+                </Grid>
+                <Grid item xs={7}>
+                  {field.type === 'file' ? (
+                    <Link href={field.value} target='_blank' rel='noreferer'>
+                      View {field.displayName}
+                    </Link>
+                  ) : field.type === 'choice' ? (
+                    field.choices.find(choice => choice.value === field.value)
+                      ?.displayName
+                  ) : (
+                    field.value
+                  )}
+                </Grid>
+              </React.Fragment>
+            ))}
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant='outlined'
+            color='success'
+            onClick={() => changeStatus('app')}
           >
-            <Button variant='outlined' color='success' onClick={handleClose}>
-              Approve
-            </Button>
-            <Button variant='outlined' color='error' onClick={handleClose}>
-              Reject
-            </Button>
-          </Stack>
-        </Box>
-      </Modal>
+            Approve
+          </Button>
+          <Button
+            variant='outlined'
+            color='error'
+            onClick={() => changeStatus('rej')}
+          >
+            Reject
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }
