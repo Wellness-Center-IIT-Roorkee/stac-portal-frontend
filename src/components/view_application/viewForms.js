@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid'
-import { Button } from '@mui/material'
+import AppModal from './approveModal'
 import { FACULTY } from '../../constants/roles'
+import { STATUS_CHOICES } from '../../constants/application'
 
 const commonColumns = [
   {
@@ -29,9 +30,7 @@ const commonColumns = [
   {
     field: 'action',
     headerName: 'Application',
-    renderCell: params => (
-      <Button style={{ textTransform: 'none' }}>View Application</Button>
-    ),
+    renderCell: params => <AppModal applicationID={params.row.id} />,
     minWidth: 100,
     flex: 1
   }
@@ -43,7 +42,9 @@ const facultyColumns = [
     field: 'status',
     headerName: 'Status',
     minWidth: 100,
-    flex: 0.5
+    flex: 0.5,
+    valueGetter: params =>
+      STATUS_CHOICES.find(choice => choice.value === params.value)?.displayName
   }
 ]
 
@@ -53,19 +54,25 @@ const adminColumns = [
     field: 'supervisor_approval_status',
     headerName: "Professor's Status",
     minWidth: 100,
-    flex: 0.5
+    flex: 0.5,
+    valueGetter: params =>
+      STATUS_CHOICES.find(choice => choice.value === params.value)?.displayName
   },
   {
     field: 'hod_approval_status',
     headerName: "HOD's Status",
     minWidth: 100,
-    flex: 0.5
+    flex: 0.5,
+    valueGetter: params =>
+      STATUS_CHOICES.find(choice => choice.value === params.value)?.displayName
   },
   {
     field: 'admin_approval_status',
     headerName: 'Status',
     minWidth: 100,
-    flex: 0.5
+    flex: 0.5,
+    valueGetter: params =>
+      STATUS_CHOICES.find(choice => choice.value === params.value)?.displayName
   }
 ]
 

@@ -67,12 +67,15 @@ export const getApplicationDetail = id => {
   }
 }
 
-export const updateApplicationStatus = id => {
+export const updateApplicationStatus = ({ id, ...payload }) => {
   const url = `${APPLICATION_APIS.application}${id}/change_status/`
   return dispatch => {
     dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, true))
     apiClient
-      .get(url)
+      .post(url, payload)
+      .then(() => {
+        dispatch(getApplications())
+      })
       .catch(err => {
         dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
         dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
