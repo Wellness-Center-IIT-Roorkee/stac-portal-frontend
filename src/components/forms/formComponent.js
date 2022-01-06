@@ -5,8 +5,8 @@ const FormDisabled = props => {
   return (
     <div className='wl-st-form-box'>
       <label className='info-name'>{props.title}</label>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <Input
         value={props.value}
         disabled
@@ -20,8 +20,8 @@ const FormBox = props => {
   return (
     <div className='wl-st-form-box'>
       <label className='info-name'>{props.title}</label>
-      <br></br>
-      <br></br>
+      <br />
+      <br />
       <Input
         onChange={props.onChange}
         defaultValue={props.value}
@@ -30,6 +30,7 @@ const FormBox = props => {
         className='info-val'
         placeholder={props.ph}
       />
+      {props.helperElement ? props.helperElement : ''}
     </div>
   )
 }

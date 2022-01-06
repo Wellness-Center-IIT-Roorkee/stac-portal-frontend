@@ -39,8 +39,10 @@ const Home = () => {
             applicationData?.reverse().map((data, index) => {
               return (
                 <RecentApplication
+                  key={data.id}
                   application={{
-                    name: `Application ${index + 1}`,
+                    id: data.id,
+                    name: `Stac Application`,
                     date: `${getFormattedDateTime(data.submission_time)}`,
                     status: `${data.status === 'app' ? 'Approved' : 'Pending'}`
                   }}
