@@ -7,6 +7,8 @@ import {
   SET_APPLICATION_DETAIL,
   GET_APPLICATION_DETAIL_API_ERROR,
   IS_GET_APPLICATION_DETAIL_PENDING,
+  UPDATE_APPLICATION_API_ERROR,
+  IS_UPDATE_APPLICATION_PENDING,
   UPDATE_STATUS_API_ERROR,
   IS_UPDATE_STATUS_PENDING
 } from '../actions/applicationActionTypes'
@@ -15,6 +17,7 @@ const initialErrorState = {
   getApplicationsError: null,
   getApplicationDetailError: null,
   createApplicationError: null,
+  updateApplicationError: null,
   updateApplicationStatusError: null
 }
 
@@ -22,6 +25,7 @@ const initialPendingState = {
   getApplicationsPending: null,
   getApplicationDetailPending: null,
   createApplicationPending: null,
+  updateApplicationPending: null,
   updateApplicationStatusPending: null
 }
 
@@ -51,6 +55,10 @@ const applicationReducer = (state = initialState, action) => {
       return { ...state, applicationDetail: payload }
     case GET_APPLICATION_DETAIL_API_ERROR:
       return { ...state, getApplicationDetailError: error }
+    case IS_UPDATE_APPLICATION_PENDING:
+      return { ...state, updateApplicationPending: payload }
+    case UPDATE_APPLICATION_API_ERROR:
+      return { ...state, updateApplicationError: error }
     case IS_UPDATE_STATUS_PENDING:
       return { ...state, updateApplicationStatusPending: payload }
     case UPDATE_STATUS_API_ERROR:

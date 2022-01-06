@@ -10,6 +10,8 @@ import {
   SET_APPLICATION_DETAIL,
   GET_APPLICATION_DETAIL_API_ERROR,
   IS_GET_APPLICATION_DETAIL_PENDING,
+  UPDATE_APPLICATION_API_ERROR,
+  IS_UPDATE_APPLICATION_PENDING,
   UPDATE_STATUS_API_ERROR,
   IS_UPDATE_STATUS_PENDING
 } from './applicationActionTypes'
@@ -48,7 +50,11 @@ export const createApplication = formData => {
   }
 }
 
-export const getApplicationDetail = id => {
+export const getApplicationDetail = (
+  id,
+  successCallback = () => {},
+  failureCallback = () => {}
+) => {
   const url = `${APPLICATION_APIS.application}${id}/`
   return dispatch => {
     dispatch(apiDispatch(IS_GET_APPLICATION_DETAIL_PENDING, true))
@@ -56,13 +62,30 @@ export const getApplicationDetail = id => {
       .get(url)
       .then(res => {
         dispatch(apiDispatch(SET_APPLICATION_DETAIL, res.data))
+        successCallback()
       })
       .catch(err => {
         dispatch(apiDispatch(SET_APPLICATION_DETAIL, {}))
         dispatch(apiDispatch(GET_APPLICATION_DETAIL_API_ERROR, err.response))
+        failureCallback()
       })
       .finally(() => {
         dispatch(apiDispatch(IS_GET_APPLICATION_DETAIL_PENDING, false))
+      })
+  }
+}
+
+export const updateApplication = ({ id, formData: payload }) => {
+  const url = `${APPLICATION_APIS.application}${id}/`
+  return dispatch => {
+    dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, true))
+    apiClient
+      .patch(url, payload)
+      .catch(err => {
+        dispatch(apiDispatch(UPDATE_APPLICATION_API_ERROR, err.response))
+      })
+      .finally(() => {
+        dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, false))
       })
   }
 }
@@ -78,7 +101,6 @@ export const updateApplicationStatus = ({ id, ...payload }) => {
       })
       .catch(err => {
         dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
-        dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
