@@ -1,5 +1,10 @@
 import React from 'react'
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import {
+  Navigate,
+  Routes,
+  Route,
+  BrowserRouter as Router
+} from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import { privateRoutes, publicRoutes } from './routes'
 import Home from './views/home'
@@ -10,6 +15,7 @@ import { getApplications } from './actions/applicationActions'
 function App () {
   const dispatch = useDispatch()
   const isLoginPending = useSelector(state => state.user.isLoginPending)
+  const role = useSelector(state => state.user?.userData?.role)
   React.useEffect(() => {
     dispatch(getInfo())
     dispatch(getApplications())
@@ -38,7 +44,13 @@ function App () {
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  element={<Layout>{route.component}</Layout>}
+                  element={
+                    route.allowedRoles.includes(role) ? (
+                      <Layout>{route.component}</Layout>
+                    ) : (
+                      <Navigate to='/' />
+                    )
+                  }
                 />
               )
             })}
