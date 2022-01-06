@@ -1,0 +1,53 @@
+import React from 'react'
+import '../../assets/css/forms/form.css'
+import { FormBox } from './formComponent'
+import {NextBtn,BackBtn} from './formBtn'
+import { Stack } from '@mui/material'
+
+const DocUpload = ({ setTab, inputs, setInputs }) => {
+  const handleChange = e => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.files[0]
+    })
+  }
+  return (
+    <div>
+      <form className='wl-st-form'>
+        <div>
+          <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 1, sm: 70, md: 120 }}
+              justifyContent='center'
+            >
+              <BackBtn name='Go Back' variant='contained' func={() => setTab(0)} />
+              <NextBtn name='Next' variant='contained' func={() => setTab(2)} />
+          </Stack>
+          <FormBox
+            title='Application Form'
+            name='application_form'
+            type='file'
+            onChange={handleChange}
+          />
+          <FormBox
+            title='Extension Letter'
+            name='extension_letter'
+            type='file'
+            onChange={handleChange}
+          />
+          <FormBox
+            title='Academic Summary'
+            name='academic_summary'
+            type='file'
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          
+        </div>
+      </form>
+    </div>
+  )
+}
+
+export default DocUpload

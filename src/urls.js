@@ -4,6 +4,5 @@ export const USER_APIS = {
   logout: 'auth/logout/',
 };
 export const APPLICATION_APIS = {
-  recentApplication: 'stac/application/',
-  newApplication: 'stac/application/',
+  application: 'stac/application/',
 };
