@@ -4,20 +4,31 @@ import Application from './views/application'
 import Home from './views/home'
 import AfterLogin from './views/afterLogin'
 import AdminView from './views/adminView'
+import UpdateApplicationView from './views/updateApplicationView'
+import { STUDENT, ADMIN, FACULTY } from './constants/roles'
 
 export const privateRoutes = [
   {
     path: '/application',
     exact: true,
     layout: DefaultLayout,
-    component: <Application />
+    component: <Application />,
+    allowedRoles: [STUDENT]
+  },
+  {
+    path: '/application/:id/update',
+    exact: true,
+    layout: DefaultLayout,
+    component: <UpdateApplicationView />,
+    allowedRoles: [STUDENT]
   },
   {
     path: '/fac',
     exact: true,
     layout: DefaultLayout,
-    component: <AdminView />
-  },
+    component: <AdminView />,
+    allowedRoles: [ADMIN, FACULTY]
+  }
 ]
 
 export const publicRoutes = [
@@ -32,5 +43,5 @@ export const publicRoutes = [
     exact: true,
     layout: DefaultLayout,
     component: <AfterLogin />
-  },
+  }
 ]
