@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FormBox, FormDisabled } from './formComponent'
 import '../../assets/css/forms/form.css'
 import {
@@ -17,6 +17,7 @@ import { updateApplication } from '../../actions/applicationActions'
 const UpdateApplication = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
+  const navigate = useNavigate()
   const applicationData = useSelector(
     state => state.application.applicationDetail
   )
@@ -48,7 +49,10 @@ const UpdateApplication = () => {
         formData.append(dataItem, data[dataItem])
       }
     })
-    dispatch(updateApplication({ id, formData }))
+    const call =()=>{
+      navigate('/')
+    }
+    dispatch(updateApplication({ id, formData, call }))
   }
 
   return (

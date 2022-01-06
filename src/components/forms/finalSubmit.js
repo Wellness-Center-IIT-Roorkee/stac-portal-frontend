@@ -4,14 +4,19 @@ import FormBtn from '../../components/forms/formBtn'
 import { Stack } from '@mui/material'
 import { createApplication } from '../../actions/applicationActions'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const FinalSubmit = ({ setTab, inputs }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleSubmit = e => {
     const formData = new FormData()
     e.preventDefault()
     Object.keys(inputs).forEach(input => formData.append(input, inputs[input]))
-    dispatch(createApplication(formData))
+    const call =()=>{
+      navigate('/')
+    }
+    dispatch(createApplication(formData, call))
   }
   return (
     <div>
