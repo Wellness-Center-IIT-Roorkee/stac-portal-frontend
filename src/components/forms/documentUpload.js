@@ -3,8 +3,8 @@ import '../../assets/css/forms/form.css'
 import { FormBox } from './formComponent'
 import FormBtn from './formBtn'
 import { Stack } from '@mui/material'
-import { useSelector, useDispatch } from 'react-redux'
-import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from '../../actions/toastActions'
+import { useDispatch } from 'react-redux'
+import { toastWarningMessage } from '../../actions/toastActions'
 
 
 const DocUpload = ({ setTab, inputs, setInputs }) => {

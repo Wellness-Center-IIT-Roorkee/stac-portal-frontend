@@ -15,7 +15,7 @@ import {
   UPDATE_STATUS_API_ERROR,
   IS_UPDATE_STATUS_PENDING
 } from './applicationActionTypes'
-import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from './toastActions'
+import { toastErrorMessage, toastSuccessMessage} from './toastActions'
 
 export const getApplications = () => {
   const url = APPLICATION_APIS.application

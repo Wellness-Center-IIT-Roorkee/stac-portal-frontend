@@ -33,6 +33,7 @@ export default function toastReducer(
       return state;
     case TOAST_WARNING:
       toast.warn(payload, config);
+      return state;
     default:
       return state;
   }
