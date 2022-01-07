@@ -19,8 +19,8 @@ const FinalSubmit = ({ setTab, inputs }) => {
     dispatch(createApplication(formData, call))
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit} className='wl-st-form'>
+    <div className='wl-st-form-parent'>
+      <form onSubmit={handleSubmit} className='wl-st-form wl-st-form-max-width-fix'>
         <div>
           <div className='wl-st-form-box'>
             <h1 className='wl-st-form-head'>Submit</h1>

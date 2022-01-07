@@ -29,8 +29,8 @@ const AppModal = ({ applicationID }) => {
     }
   }, [open, applicationID])
 
-  const changeStatus = status => {
-    dispatch(updateApplicationStatus({ id: applicationID, status }))
+  const changeStatus = (status,remarks) => {
+    dispatch(updateApplicationStatus({ id: applicationID, ...{status:status, remarks:remarks} }))
     handleClose()
   }
 

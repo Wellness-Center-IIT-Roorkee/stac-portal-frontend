@@ -84,7 +84,7 @@
 }
 .wl_sp_hm_rcap{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     width: 100%;
     margin: 1.35rem 0;
