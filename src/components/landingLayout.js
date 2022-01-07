@@ -13,23 +13,34 @@ const LandingLayout = () => {
   return (
     <div className='wl_sp_lp_main'>
       <div className='wl_sp_lp_lft'>
-        <h1>Stac Portal</h1>
+        <h1>Students’ Aid Committee (StAC)</h1>
         <p>
-          Lorem ipsum dolor sit amet. In minus internos quo voluptatem
-          temporibus ex dolore dolore qui laborum doloremque. Qui voluptate
-          quidem et dolorum voluptate cum obcaecati sapiente qui placeat fuga.
+        Students’ Aid Committee (StAC) provides financial support to needy students.
+        Such students should apply to StAC for financial support.
         </p>
+        <h3>APPLICATION PROCEDURE</h3>
         <p>
-          Aut omnis excepturi eos laborum laudantium eos unde voluptas aut
-          laudantium consequatur. Ut illum adipisci qui blanditiis voluptate sed
-          consequatur inventoreet quia quia. In odio ducimus vel ullam quae
-          cumque natus.
+        StAC meets 4 times every year to consider the application received for 
+          financial support, as mentioned below.
+          <br/>
+          1. Last date to receive application- 15thJanuary 
+          <br/>
+          Meeting date- Last week of January   
+          <br/>
+          2. Last date to receive application- 15thApril
+          <br/>
+          Meeting date- Last week of April
+          <br/>
+          3. Last date to receive application- 15thJuly 
+          <br/>
+          Meeting date- Last week of July
+          <br/>
+          4. Last date to receive application- 15thOctober  
+          <br/>
+          Meeting date- Last week of October 
+          <br/>
         </p>
-        <p>
-          Et vitae dolor et rerum blanditiis ut harum molestiae? Aut repellat
-          voluptatem et architecto voluptatem est voluptas quae quo quis
-          tenetur.
-        </p>
+        
         <button
           onClick={() =>
             isLoggedIn

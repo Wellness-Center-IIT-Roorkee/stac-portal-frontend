@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FormBox, FormDisabled } from './formComponent'
 import '../../assets/css/forms/form.css'
+import {FormBtn,BackBtn} from './formBtn'
 import {
   Select,
   MenuItem,
@@ -16,8 +17,8 @@ import { updateApplication } from '../../actions/applicationActions'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
+  const navigate=useNavigate()
   const { id } = useParams()
-  const navigate = useNavigate()
   const applicationData = useSelector(
     state => state.application.applicationDetail
   )
@@ -59,6 +60,11 @@ const UpdateApplication = () => {
     <div>
       <form className='wl-st-form'>
         <div>
+          <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+              >
+                <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+          </Stack>
           <FormDisabled
             title='Name'
             value={applicationData?.student?.name}
@@ -172,12 +178,13 @@ const UpdateApplication = () => {
               </Link>
             }
           />
-          <Stack direction='row-reverse'>
-            <Button variant='contained' onClick={sendUpdateRequest}>
-              Update
-            </Button>
-          </Stack>
+          
         </div>
+        <Stack
+                direction={{ xs: 'column', sm: 'row-reversed' }}
+              >
+                <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+          </Stack>
       </form>
     </div>
   )

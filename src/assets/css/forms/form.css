@@ -9,22 +9,22 @@
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
-  font-size: 22px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   color: #161616;
 }
 .wl-st-form-head {
-  height: 27px;
-  left: 80px;
-  top: 717px;
-  margin-top: 20px;
-  margin-left: 20px;
+  height: 1.688rem;
+  left: 5rem;
+  top: 44.813rem;
+  margin-top: 1.25rem;
+  margin-left: 1.25rem;
   padding-top: 3%;
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  font-size: 22px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   letter-spacing: 0.04vmax;
   color: #2f2a69;
 }
@@ -32,14 +32,14 @@
   background: #ffffff;
   border-radius: 8px;
   padding: 2%;
-  margin: 20px;
+  margin: 1.25rem;
 }
 .info-name {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  font-size: 22px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   color: #161616;
   padding-bottom: 8%;
 }
@@ -49,8 +49,8 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  font-size: 22px;
-  line-height: 27px;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
   color: #5c5c5c !important;
   width: 100%;
 }

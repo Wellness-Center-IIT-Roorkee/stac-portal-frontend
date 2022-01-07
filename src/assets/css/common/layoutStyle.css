@@ -27,6 +27,7 @@
     letter-spacing: 0.04rem;
     color: #2F2A69;
 }
+
 .wl_sp_lp_lft h4{
     font-family: Inter;
     font-style: normal;
@@ -34,6 +35,15 @@
     font-size: 1.56rem;
     line-height: 2rem;
     color: #2F2A69;
+}
+.wl_sp_lp_lft h3{
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.56rem;
+    line-height: 2rem;
+    color: #2F2A69;
+    text-decoration: underline;
 }
 .wl_sp_lp_lft p{
     font-family: SF Pro Display;

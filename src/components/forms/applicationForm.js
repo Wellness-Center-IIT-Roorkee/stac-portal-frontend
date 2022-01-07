@@ -1,11 +1,11 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import FormBtn from './formBtn'
+import {NextBtn,BackBtn} from './formBtn'
 import { FormBox, FormDisabled } from './formComponent'
 import '../../assets/css/forms/form.css'
 import { Stack, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { toastWarningMessage } from '../../actions/toastActions'
+import { useNavigate } from 'react-router-dom'
 
 const ApplicationForm = ({ setTab, inputs, setInputs }) => {
   const userData = useSelector(state => state.user.userData)
@@ -29,6 +29,11 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
     <div>
       <form className='wl-st-form'>
         <div>
+          <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+            >
+              <BackBtn name='Go Back' variant='contained' func={() => navigate('/')} />
+          </Stack>
           <FormDisabled
             title='Name'
             value={userData?.name}
@@ -96,19 +101,12 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
             value={inputs.hod_email}
             onChange={handleChange}
           />
-
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={{ xs: 1, sm: 70, md: 120 }}
-            justifyContent='center'
-          >
-            <FormBtn
-              name='Home'
-              variant='outlined'
-              func={() => navigate('/')}
-            />
-            <FormBtn name='Next' variant='contained' func={() => nextFunc()} />
+         <Stack
+              direction={{ xs: 'column', sm: 'row-reversed' }}
+            >
+              <NextBtn name='Next' variant='contained' func={() =>  nextFunc()} />
           </Stack>
+          
         </div>
       </form>
     </div>
