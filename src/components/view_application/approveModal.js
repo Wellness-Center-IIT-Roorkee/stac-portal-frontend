@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Grid, Link ,Stack, Select, MenuItem, InputLabel, FormControl} from '@mui/material'
+import { Button, Grid, Link ,Stack} from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -14,6 +14,7 @@ import {
 } from '../../actions/applicationActions'
 import '../../assets/css/forms/form.css'
 import { formMap } from '../../constants/formMap'
+import SplitButton from './splitBtn'
 
 const AppModal = ({ applicationID }) => {
   const [open, setOpen] = useState(false)
@@ -98,23 +99,7 @@ const AppModal = ({ applicationID }) => {
                 placeholder='Leave a comment'
               />
             
-            <FormControl variant='standard'>
-              <InputLabel
-                id='demo-simple-select-standard-label'
-                className='info-name'
-              >
-                Status{' '}
-              </InputLabel>
-              <Select
-                name='applied_semester'
-                onChange={changeStatus}
-                sx={{ width: 100, height: 40 }}
-              >
-                <MenuItem value='app'>Approve</MenuItem>
-                <MenuItem value='rej'>Reject</MenuItem>
-                <MenuItem value='inc'>Mark as Incomplete</MenuItem>
-              </Select>
-            </FormControl>
+            <SplitButton/>
           </Stack>
           <Button
             variant='outlined'
