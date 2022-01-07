@@ -85,22 +85,16 @@ const AppModal = ({ applicationID }) => {
             ))}
           </Grid>
         </DialogContent>
-        <DialogActions>
-          <Stack
-              direction={{ xs: 'column', sm: 'row' }}
-              spacing={{ xs: 1, sm: 2, md: 2 }}
-              sx={{ margin: '2rem' }}
-            >
-            <TextField
-                autoFocus
-                margin="dense"
-                id="remark"
-                fullWidth
-                placeholder='Leave a comment'
-              />
-            
-            <SplitButton/>
-          </Stack>
+        <DialogActions >
+          <TextField
+                  autoFocus
+                  margin="dense"
+                  id="remark"
+                  fullWidth
+                  placeholder='Leave a comment'
+                  variant="standard"
+                />
+          <SplitButton/>
           <Button
             variant='outlined'
             color='success'
