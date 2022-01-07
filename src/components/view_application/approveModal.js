@@ -5,6 +5,8 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import {
   getApplicationDetail,
   updateApplicationStatus
@@ -44,7 +46,20 @@ const AppModal = ({ applicationID }) => {
           '& .MuiPaper-root': { width: '40%', minWidth: 300, overflow: 'auto' }
         }}
       >
-        <DialogTitle>Application</DialogTitle>
+        <DialogTitle>Application
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+        </DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
             {formFields.map((field, index) => (
