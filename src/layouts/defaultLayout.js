@@ -21,7 +21,7 @@ const DefaultLayout = ({ children }) => {
           {children}
         </div>
         <ToastContainer
-          position="bottom-center"
+          position="top-center"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}

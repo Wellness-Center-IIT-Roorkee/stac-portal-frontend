@@ -9,7 +9,6 @@ import {
   LOGGING_OUT_PENDING,
   USER_API_ERROR
 } from './userActionTypes'
-import { toastErrorMessage, toastSuccessMessage, toastInfoMessage, toastWarningMessage } from './toastActions'
 
 export const login = (code, callback = () => {}) => {
   const url = USER_APIS.login
@@ -22,7 +21,6 @@ export const login = (code, callback = () => {}) => {
         dispatch(apiDispatch(SET_IS_LOGIN, true))
         console.log(res)
         callback(res.data)
-        dispatch(toastSuccessMessage('Logged In Successfully'))
       })
       .catch(err => {
         if (err.response.data.error !== 'You are already logged in.') {
@@ -31,7 +29,6 @@ export const login = (code, callback = () => {}) => {
           dispatch(apiDispatch(SET_USER_DATA, {}))
           dispatch(apiDispatch(SET_IS_LOGIN, false))
           dispatch(apiDispatch(USER_API_ERROR, err.response))
-          dispatch(toastErrorMessage('Some Error occured in Logging In'))
         }
       })
       .finally(() => {
@@ -70,11 +67,9 @@ export const logOut = () => {
       .then(res => {
         dispatch(apiDispatch(SET_IS_LOGIN, false))
         dispatch(apiDispatch(SET_USER_DATA, {}))
-        dispatch(toastSuccessMessage('Logged Out Successfully'))
       })
       .catch(err => {
         dispatch(apiDispatch(USER_API_ERROR, err.response))
-        dispatch(toastErrorMessage('Some Error occured in Logging Out'))
       })
       .finally(() => {
         dispatch(apiDispatch(LOGGING_OUT_PENDING, false))
