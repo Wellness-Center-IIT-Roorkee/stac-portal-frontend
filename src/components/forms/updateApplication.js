@@ -63,7 +63,7 @@ const UpdateApplication = () => {
           <Stack
                 direction={{ xs: 'column', sm: 'row' }}
               >
-                <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+                <BackBtn name='Go Back' variant='contained' func={()=>navigate('/')} />
           </Stack>
           <FormDisabled
             title='Name'
@@ -181,7 +181,7 @@ const UpdateApplication = () => {
           
         </div>
         <Stack
-                direction={{ xs: 'column', sm: 'row-reversed' }}
+                direction={{ xs: 'column', sm: 'row-reverse' }}
               >
                 <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
           </Stack>

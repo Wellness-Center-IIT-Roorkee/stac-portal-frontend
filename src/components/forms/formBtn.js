@@ -23,7 +23,7 @@ const BackBtn = props => {
   return (
     <Button
       color='primary'
-      variant={props.variant}
+      variant=''
       type={props.type}
       onClick={props.func}
       startIcon={<ArrowBackIosNewIcon />}

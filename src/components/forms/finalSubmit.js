@@ -38,7 +38,7 @@ const FinalSubmit = ({ setTab, inputs }) => {
           </div>
         </div>
         <Stack
-              direction={{ xs: 'column', sm: 'row-reversed' }}
+              direction={{ xs: 'column', sm: 'row-reverse' }}
             >
               <FormBtn name='Submit' type='submit' variant='contained' />
           </Stack>
