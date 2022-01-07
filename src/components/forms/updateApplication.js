@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FormBox, FormDisabled } from './formComponent'
 import '../../assets/css/forms/form.css'
+import {FormBtn,BackBtn} from './formBtn'
 import {
   Select,
   MenuItem,
@@ -13,9 +14,11 @@ import {
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateApplication } from '../../actions/applicationActions'
+import { useNavigate } from 'react-router-dom'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
+  const navigate=useNavigate()
   const { id } = useParams()
   const navigate = useNavigate()
   const applicationData = useSelector(
@@ -59,6 +62,14 @@ const UpdateApplication = () => {
     <div>
       <form className='wl-st-form'>
         <div>
+          <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={{ xs: 1, sm: 70, md: 120 }}
+                justifyContent='center'
+              >
+                <BackBtn name='Go Back' variant='contained' func={() => navigate('/')} />
+                <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+          </Stack>
           <FormDisabled
             title='Name'
             value={applicationData?.student?.name}
@@ -172,11 +183,7 @@ const UpdateApplication = () => {
               </Link>
             }
           />
-          <Stack direction='row-reverse'>
-            <Button variant='contained' onClick={sendUpdateRequest}>
-              Update
-            </Button>
-          </Stack>
+          
         </div>
       </form>
     </div>

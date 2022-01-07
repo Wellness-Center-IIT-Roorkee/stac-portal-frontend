@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../assets/css/forms/form.css'
 import { FormBox } from './formComponent'
-import FormBtn from './formBtn'
+import {NextBtn,BackBtn} from './formBtn'
 import { Stack } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { toastWarningMessage } from '../../actions/toastActions'
@@ -26,6 +26,14 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
     <div>
       <form className='wl-st-form'>
         <div>
+          <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 1, sm: 70, md: 120 }}
+              justifyContent='center'
+            >
+              <BackBtn name='Go Back' variant='contained' func={() => setTab(0)} />
+              <NextBtn name='Next' variant='contained' func={() => nextFunc()} />
+          </Stack>
           <FormBox
             title='Application Form'
             name='application_form'
@@ -46,14 +54,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
           />
         </div>
         <div>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={{ xs: 1, sm: 70, md: 120 }}
-            justifyContent='center'
-          >
-            <FormBtn name='Go Back' variant='outlined' func={() => setTab(0)} />
-            <FormBtn name='Next' variant='contained' func={() => nextFunc()} />
-          </Stack>
+          
         </div>
       </form>
     </div>
