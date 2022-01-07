@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
+import { Button } from '@mui/material'
 import logo from '../../assets/logo/iitr.png'
 import { makeStyles } from '@mui/styles'
 import '../../assets/css/common/style.css'
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { oauthUrl } from '../../constants'
 import { getInitials } from '../../helpers/helperFunctions'
 import { logOut } from '../../actions/userActions'
+import { useNavigate } from 'react-router-dom'
 
 const settings = ['Logout']
 
@@ -46,6 +48,7 @@ function ResponsiveAppBar () {
     state => state.user.userData.display_picture
   )
   const dispatch = useDispatch()
+  const navigate=useNavigate()
 
   return (
     <AppBar position='static' color='default' className={classes.appBar}>
@@ -57,7 +60,10 @@ function ResponsiveAppBar () {
             component='div'
             sx={{ flexGrow: 1, display: 'flex' }}
           >
-            <Avatar className={classes.iitrLogo} alt='IITR' src={logo} />
+            <Button className={classes.mainLogo}>
+              <Avatar className={classes.iitrLogo} alt='IITR' src={logo} onClick={() => navigate('/')} />
+            </Button>
+            
           </Typography>
           {isLoggedIn && (
             <Box style={{marginRight:"1.5rem"}} sx={{ flexGrow: 0 }}>
