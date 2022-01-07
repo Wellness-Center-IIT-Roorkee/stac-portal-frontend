@@ -3,7 +3,7 @@ import '../../assets/css/forms/form.css'
 import { Input } from '@mui/material'
 const FormDisabled = props => {
   return (
-    <div className='wl-st-form-box'>
+    <div style={props.style} className='wl-st-form-box'>
       <label className='info-name'>{props.title}</label>
       <br />
       <br />
@@ -18,7 +18,7 @@ const FormDisabled = props => {
 }
 const FormBox = props => {
   return (
-    <div className='wl-st-form-box'>
+    <div style={props.style} className='wl-st-form-box'>
       <label className='info-name'>{props.title}</label>
       <br />
       <br />

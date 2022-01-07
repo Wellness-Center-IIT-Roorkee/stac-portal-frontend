@@ -5,6 +5,15 @@
   background: #bdd0fb;
   padding: 2%;
 }
+.wl-st-form-parent {
+  background: #bdd0fb;
+  display: flex;
+  justify-content: center;
+}
+.wl-st-form-max-width-fix {
+  max-width: 1000px;
+  width: 100%;
+}
 .wl-st-desc {
   font-family: Inter;
   font-style: normal;

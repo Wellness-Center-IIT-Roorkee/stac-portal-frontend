@@ -57,8 +57,8 @@ const UpdateApplication = () => {
   }
 
   return (
-    <div>
-      <form className='wl-st-form'>
+    <div className='wl-st-form-parent'>
+      <form className='wl-st-form wl-st-form-max-width-fix'>
         <div>
           <Stack
                 direction={{ xs: 'column', sm: 'row' }}

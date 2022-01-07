@@ -41,17 +41,19 @@ export const createApplication = (formData, call) => {
   return dispatch => {
     dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, true))
     apiClient
-      .post(url, formData)
+    .post(url, formData)
+    .then(()=>{
+        dispatch(toastSuccessMessage('Application Created Successfully'))
+        setTimeout(() => {
+          call();
+        }, 1000);
+      })
       .catch(err => {
         dispatch(apiDispatch(CREATE_APPLICATION_API_ERROR, err.response))
         dispatch(toastErrorMessage('Some Error occured in Creating Application'))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_CREATE_APPLICATION_PENDING, false))
-        dispatch(toastSuccessMessage('Application Created Successfully'))
-        setTimeout(() => {
-          call();
-        }, 1000);
       })
   }
 }
@@ -87,16 +89,18 @@ export const updateApplication = ({ id, formData: payload, call }) => {
     dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, true))
     apiClient
       .patch(url, payload)
+      .then(()=>{
+        dispatch(toastSuccessMessage('Application Updated Successfully'))
+        setTimeout(() => {
+          call();
+        }, 1000);
+      })
       .catch(err => {
         dispatch(apiDispatch(UPDATE_APPLICATION_API_ERROR, err.response))
         dispatch(toastErrorMessage('Some Error occured in Updating Application'))
       })
       .finally(() => {
         dispatch(apiDispatch(IS_UPDATE_APPLICATION_PENDING, false))
-        dispatch(toastSuccessMessage('Application Updated Successfully'))
-        setTimeout(() => {
-          call();
-        }, 1000);
       })
   }
 }
@@ -109,6 +113,7 @@ export const updateApplicationStatus = ({ id, ...payload }) => {
       .post(url, payload)
       .then(() => {
         dispatch(getApplications())
+        dispatch(toastSuccessMessage('Status Updated Successfully'))
       })
       .catch(err => {
         dispatch(apiDispatch(UPDATE_STATUS_API_ERROR, err.response))
@@ -116,7 +121,6 @@ export const updateApplicationStatus = ({ id, ...payload }) => {
       })
       .finally(() => {
         dispatch(apiDispatch(IS_UPDATE_STATUS_PENDING, false))
-        dispatch(toastSuccessMessage('Status Updated Successfully'))
       })
   }
 }
