@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Grid, Link } from '@mui/material'
+import { Button, Grid, Link ,Stack, Select, MenuItem, InputLabel, FormControl} from '@mui/material'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import TextField from '@mui/material/TextField';
 import {
   getApplicationDetail,
   updateApplicationStatus
@@ -84,6 +85,37 @@ const AppModal = ({ applicationID }) => {
           </Grid>
         </DialogContent>
         <DialogActions>
+          <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 1, sm: 2, md: 2 }}
+              sx={{ margin: '2rem' }}
+            >
+            <TextField
+                autoFocus
+                margin="dense"
+                id="remark"
+                fullWidth
+                placeholder='Leave a comment'
+              />
+            
+            <FormControl variant='standard'>
+              <InputLabel
+                id='demo-simple-select-standard-label'
+                className='info-name'
+              >
+                Status{' '}
+              </InputLabel>
+              <Select
+                name='applied_semester'
+                onChange={changeStatus}
+                sx={{ width: 100, height: 40 }}
+              >
+                <MenuItem value='app'>Approve</MenuItem>
+                <MenuItem value='rej'>Reject</MenuItem>
+                <MenuItem value='inc'>Mark as Incomplete</MenuItem>
+              </Select>
+            </FormControl>
+          </Stack>
           <Button
             variant='outlined'
             color='success'

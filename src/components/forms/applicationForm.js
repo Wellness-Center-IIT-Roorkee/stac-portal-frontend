@@ -6,7 +6,6 @@ import { Stack, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { toastWarningMessage } from '../../actions/toastActions'
 import { useNavigate } from 'react-router-dom'
-
 const ApplicationForm = ({ setTab, inputs, setInputs }) => {
   const userData = useSelector(state => state.user.userData)
   const navigate = useNavigate()
@@ -102,11 +101,10 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
             onChange={handleChange}
           />
          <Stack
-              direction={{ xs: 'column', sm: 'row-reversed' }}
+              direction={{ xs: 'column', sm: 'row-reverse' }}
             >
               <NextBtn name='Next' variant='contained' func={() =>  nextFunc()} />
           </Stack>
-          
         </div>
       </form>
     </div>

@@ -52,7 +52,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
         </div>
         <div>
         <Stack
-              direction={{ xs: 'column', sm: 'row-reversed' }}
+              direction={{ xs: 'column', sm: 'row-reverse' }}
             >
 
               <NextBtn name='Next' variant='contained' func={() => nextFunc()} />
