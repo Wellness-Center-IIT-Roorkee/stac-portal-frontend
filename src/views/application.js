@@ -17,7 +17,8 @@ const Application = () => {
     hod_email: '',
     application_form: null,
     extension_letter: null,
-    academic_summary: null
+    academic_summary: null,
+    remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
   const props = { setTab, inputs, setInputs }

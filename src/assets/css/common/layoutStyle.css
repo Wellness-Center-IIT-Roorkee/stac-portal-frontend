@@ -76,6 +76,7 @@
     text-decoration: none;
     border: 2.5px solid #4649EE;
     background: #4649EE;
+    margin-bottom: 2rem;
 }
 .wl_sp_lp_lft button:hover{
     background: none;
