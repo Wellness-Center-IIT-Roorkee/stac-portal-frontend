@@ -18,12 +18,14 @@ import SplitButton from './splitBtn'
 
 const AppModal = ({ applicationID }) => {
   const [open, setOpen] = useState(false)
+  const [remarks, setRemarks] = useState(null)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const dispatch = useDispatch()
   const applicationDetail = useSelector(
     state => state.application.applicationDetail
   )
+  const role = useSelector(state => state.user.userData?.role)
   const formFields = formMap(applicationDetail)
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const AppModal = ({ applicationID }) => {
     }
   }, [open, applicationID])
 
-  const changeStatus = (status,remarks) => {
+  const changeStatus = (status) => {
     dispatch(updateApplicationStatus({ id: applicationID, ...{status:status, remarks:remarks} }))
     handleClose()
   }
@@ -86,35 +88,42 @@ const AppModal = ({ applicationID }) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Stack
-              direction={{ xs: 'column', sm: 'row' }}
-              spacing={{ xs: 1, sm: 2, md: 2 }}
-              sx={{ margin: '2rem' }}
+          {
+            role==="admin"?
+            <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={{ xs: 1, sm: 2, md: 2 }}
+                sx={{ margin: '2rem' }}
+              >
+              <TextField
+                  autoFocus
+                  margin="dense"
+                  id="remark"
+                  fullWidth
+                  placeholder='Leave a comment'
+                  onChange={(e)=>setRemarks(e.target.value)}
+                />
+              
+              <SplitButton changeStatus={changeStatus}/>
+            </Stack>
+            :
+            <>
+            <Button
+              variant='outlined'
+              color='success'
+              onClick={() => changeStatus('app')}
             >
-            <TextField
-                autoFocus
-                margin="dense"
-                id="remark"
-                fullWidth
-                placeholder='Leave a comment'
-              />
-            
-            <SplitButton/>
-          </Stack>
-          <Button
-            variant='outlined'
-            color='success'
-            onClick={() => changeStatus('app')}
-          >
-            Approve
-          </Button>
-          <Button
-            variant='outlined'
-            color='error'
-            onClick={() => changeStatus('rej')}
-          >
-            Reject
-          </Button>
+              Approve
+            </Button>
+            <Button
+              variant='outlined'
+              color='error'
+              onClick={() => changeStatus('rej')}
+            >
+              Reject
+            </Button>
+            </>
+          }
         </DialogActions>
       </Dialog>
     </div>

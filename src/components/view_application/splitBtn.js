@@ -11,12 +11,25 @@ import MenuList from '@mui/material/MenuList';
 
 const options = ['Approve', 'Reject', 'Mark as Incomplete'];
 
-export default function SplitButton() {
+export default function SplitButton({changeStatus}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleClick = () => {
+    switch (selectedIndex) {
+      case 0:
+        changeStatus('app');
+        break;
+      case 1:
+        changeStatus('rej');
+        break;
+      case 2:
+        changeStatus('inc');
+        break;
+      default:
+        break;
+    }
     console.info(`You clicked ${options[selectedIndex]}`);
   };
 
