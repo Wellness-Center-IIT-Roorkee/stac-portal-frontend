@@ -64,8 +64,8 @@ function ResponsiveAppBar () {
             component='div'
             sx={{ flexGrow: 1, display: 'flex' }}
           >
-            <Button className={classes.mainLogo}>
-              <Avatar className={classes.iitrLogo} alt='IITR' src={logo} onClick={() => navigate('/')} />
+            <Button onClick={() => navigate('/')} className={classes.mainLogo}>
+              <Avatar className={classes.iitrLogo} alt='IITR' src={logo}  />
             </Button>
             
           </Typography>
