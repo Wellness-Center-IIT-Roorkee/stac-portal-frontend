@@ -26,7 +26,11 @@ const AppModal = ({ applicationID }) => {
     (state) => state.application.applicationDetail
   );
   const role = useSelector((state) => state.user.userData?.role);
-  const formFields = formMap(applicationDetail);
+  const formFields = (role==='admin'&&(applicationDetail?.admin_approval_status==='rej'||applicationDetail?.admin_approval_status==='inc')?[...formMap(applicationDetail) , {
+    displayName: 'Remarks',
+    value: applicationDetail?.remarks,
+    type: 'text'
+  }] :formMap(applicationDetail));
 
   useEffect(() => {
     if (open) {

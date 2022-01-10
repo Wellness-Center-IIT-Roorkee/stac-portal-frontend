@@ -22,7 +22,10 @@ const settings = ['Logout']
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    display: 'flex'
+    display: 'flex',
+    boxShadow: 'none !important',
+    borderBottom: 'thin solid #E7EBF0',
+    backgroundColor: '#fff !important'
   },
   iitrLogo: {
     width: '2.8vmax',

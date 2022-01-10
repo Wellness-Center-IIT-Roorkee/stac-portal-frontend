@@ -6,6 +6,7 @@ import { getApplications } from '../actions/applicationActions'
 import { getFormattedDateTime } from '../helpers/helperFunctions'
 import Loader from '../components/common/loader'
 import { STUDENT } from '../constants/roles'
+import { STATUS_CHOICES } from '../constants/application'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -43,8 +44,8 @@ const Home = () => {
                   application={{
                     id: data.id,
                     name: `Stac Application`,
-                    date: `${getFormattedDateTime(data.submission_time)}`,
-                    status: `${data.status === 'app' ? 'Approved' : 'Pending'}`
+                    date: `${getFormattedDateTime(data?.submission_time)}`,
+                    status: `${STATUS_CHOICES.find((x)=>x.value===(data?.status))?.displayName}`
                   }}
                 />
               )

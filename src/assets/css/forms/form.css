@@ -63,3 +63,25 @@
   color: #5c5c5c !important;
   width: 100%;
 }
+.wl-st-status{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  color: #2F2A69;
+  margin: 0 !important;
+  margin-bottom: 0.6rem !important;
+  margin-left: 1.2rem !important;
+}
+.wl-st-remarks{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.7rem;
+  color: #E0425A;
+  margin: 0 !important;
+  margin-bottom: 0.8rem !important;
+  margin-left: 1.2rem !important;
+}

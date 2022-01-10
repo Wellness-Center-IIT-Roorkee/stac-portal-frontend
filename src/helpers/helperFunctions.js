@@ -46,6 +46,7 @@ export const getFormattedDate = date => {
   return day + '/' + month + '/' + year;
 };
 export const getFormattedDateTime = data => {
+  if(!data) return
   var month = data.substring(5,7);
   var day = data.substring(8,10);
   var year = data.substring(0,4);
