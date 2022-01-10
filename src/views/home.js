@@ -27,7 +27,7 @@ const Home = () => {
     <>
       <LandingLayout />
       {isLoggedIn && role === STUDENT && (
-        <div onClick={() => console.log(applicationData[0])}>
+        <div>
           <RecentApplication
             isHeading={true}
             application={{

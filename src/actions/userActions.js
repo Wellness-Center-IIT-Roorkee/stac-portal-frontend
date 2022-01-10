@@ -19,7 +19,6 @@ export const login = (code, callback = () => {}) => {
       .then(res => {
         dispatch(apiDispatch(SET_USER_DATA, res.data))
         dispatch(apiDispatch(SET_IS_LOGIN, true))
-        console.log(res)
         callback(res.data)
       })
       .catch(err => {
