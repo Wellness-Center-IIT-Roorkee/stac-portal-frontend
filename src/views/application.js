@@ -45,18 +45,37 @@ const Application = () => {
     <>
       <div className='wl_sp_lp_main2'>
         <div className='wl_sp_lp_lft wl_sp_lp_lft2'>
-          <h4>Application Form</h4>
-          <p>
-            Lorem ipsum dolor sit amet. In minus internos quo voluptatem
-            temporibus ex dolore dolore qui laborum doloremque. Qui voluptate
-            quidem et dolorum voluptate cum obcaecati sapiente qui placeat fuga.
-          </p>
-          <p>
-            Aut omnis excepturi eos laborum laudantium eos unde voluptas aut
-            laudantium consequatur. Ut illum adipisci qui blanditiis voluptate
-            sed consequatur inventoreet quia quia. In odio ducimus vel ullam
-            quae cumque natus.
-          </p>
+        <h3>Application Form</h3>
+        <p>
+          <div>
+            StAC meets 4 times every year to consider the application received for
+            financial support, as mentioned below.
+          </div>
+          <div>
+            1. Last date to receive application- 15thJanuary
+          </div>
+          <div>
+            Meeting date- Last week of January
+          </div>
+          <div>
+            2. Last date to receive application- 15thApril
+          </div>
+          <div>
+            Meeting date- Last week of April
+          </div>
+          <div>
+            3. Last date to receive application- 15thJuly
+          </div>
+          <div>
+            Meeting date- Last week of July
+          </div>
+          <div>
+            4. Last date to receive application- 15thOctober
+          </div>
+          <div>
+            Meeting date- Last week of October
+          </div>
+        </p>
         </div>
         <div className='wl_sp_lp_rgt2'>
           <img src={illustration} alt='' />
