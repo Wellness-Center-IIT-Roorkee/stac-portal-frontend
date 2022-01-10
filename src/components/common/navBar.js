@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import { Button } from '@mui/material'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import logo from '../../assets/logo/iitr.png'
 import { makeStyles } from '@mui/styles'
 import '../../assets/css/common/style.css'
@@ -71,13 +72,16 @@ function ResponsiveAppBar () {
           {isLoggedIn && (
             <Box style={{marginRight:"1.5rem"}} sx={{ flexGrow: 0 }}>
               {/* <Tooltip title={null}> */}
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton style={{borderRadius:"0",padding:"0.5rem"}} onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar
                 alt={getInitials(userName)
                   .reduce((a, b) => a + b, '')
                   .substr(0, 2)}
                 src={`https://channeli.in${displayPicture}`}
               />
+                <Typography style={{marginLeft:"0.5rem",fontSize:"1.3rem",fontWeight:"bold",fontFamily:"SF Pro Display"}} 
+                textAlign="center">{userName}</Typography>
+                <ArrowDropDownIcon />                  
               </IconButton>
               {/* </Tooltip> */}
               <Menu

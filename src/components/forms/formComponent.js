@@ -27,6 +27,7 @@ const FormBox = props => {
         defaultValue={props.value}
         name={props.name}
         type={props.type}
+        inputProps={{accept:"application/pdf, image/*"}}
         className='info-val'
         placeholder={props.ph}
       />
