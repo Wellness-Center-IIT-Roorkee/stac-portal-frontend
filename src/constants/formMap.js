@@ -1,4 +1,5 @@
 import { SEMESTER_CHOICES } from './application'
+import { getFormattedDateTime } from '../helpers/helperFunctions'
 
 export const formMap = formData => [
   {
@@ -31,6 +32,11 @@ export const formMap = formData => [
     value: formData?.applied_semester,
     type: 'choice',
     choices: SEMESTER_CHOICES
+  },
+  {
+    displayName: 'Date applied',
+    value: (getFormattedDateTime(formData?.submission_time)),
+    type: 'text',
   },
   {
     displayName: 'Supervisor Email',

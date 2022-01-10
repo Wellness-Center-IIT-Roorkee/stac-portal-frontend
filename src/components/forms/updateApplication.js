@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateApplication } from '../../actions/applicationActions'
+import { STATUS_CHOICES } from '../../constants/application'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
@@ -60,6 +61,13 @@ const UpdateApplication = () => {
     <div className='wl-st-form-parent'>
       <form className='wl-st-form wl-st-form-max-width-fix'>
         <div>
+          <div>
+            <h3 className="wl-st-status">STATUS: {STATUS_CHOICES.find((x)=>x.value===(applicationData?.status))?.displayName}</h3>
+            {
+              (applicationData?.status === 'rej'||applicationData?.status === 'inc') &&
+              <h3 className="wl-st-remarks">{applicationData?.remarks}</h3>
+            }
+          </div>
           <Stack
                 direction={{ xs: 'column', sm: 'row' }}
               >
