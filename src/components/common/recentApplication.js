@@ -33,7 +33,7 @@ const RecentApplication = ({ application, isHeading }) => {
           isHeading
             ? 'wl_sp_hm_rcap_head'
             : 'wl_sp_hm_rcap_nrml wl_sp_hm_rcap_ital'
-        }`}
+        }${application.status==='Approved'?" color_green":""}${(application.status==='Incomplete'||application.status==='rejected')?" color_red":""}`}
       >
         {application.status}
       </div>
