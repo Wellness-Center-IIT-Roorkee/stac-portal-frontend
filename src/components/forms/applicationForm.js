@@ -16,8 +16,9 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
       [e.target.name]: e.target.value
     })
   }
+  const isPhD=userData?.student.branch.toLowerCase().split('.').join('').includes('phd')
   const nextFunc=()=>{
-    if(inputs?.phone_number?.length && inputs?.applied_semester?.length && inputs?.hod_email?.length && inputs?.supervisor_email?.length){
+    if(inputs?.phone_number?.length &&( isPhD? (inputs?.hod_email?.length && inputs?.supervisor_email?.length):true)){
       setTab(1);
     }else{
       dispatch(toastWarningMessage('Please fill mandatory fields'));
@@ -83,23 +84,30 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
             type='number'
             ph='Enter your number'
             name='phone_number'
+            required={true}
           />
-          <FormBox
-            title="Supervisor's Email Id"
-            type='email'
-            ph='Enter email'
-            name='supervisor_email'
-            value={inputs.supervisor_email}
-            onChange={handleChange}
-          />
-          <FormBox
-            title='Head of Dept. Email Id'
-            type='email'
-            ph='Enter email'
-            name='hod_email'
-            value={inputs.hod_email}
-            onChange={handleChange}
-          />
+          {
+            isPhD
+            &&
+            <>
+              <FormBox
+                title="Supervisor's Email Id"
+                type='email'
+                ph='Enter email'
+                name='supervisor_email'
+                value={inputs.supervisor_email}
+                onChange={handleChange}
+              />
+              <FormBox
+                title='Head of Dept. Email Id'
+                type='email'
+                ph='Enter email'
+                name='hod_email'
+                value={inputs.hod_email}
+                onChange={handleChange}
+              />
+            </>
+          }
          <Stack
               direction={{ xs: 'column', sm: 'row-reverse' }}
             >
