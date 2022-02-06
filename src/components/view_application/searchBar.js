@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Stack, Input } from '@mui/material'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import '../../assets/css/forms/form.css'
 
-const SearchBar = ({ applicationData, setData }) => {
+const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree }) => {
   const [search, setSearch] = useState('')
 
   const filterData = () => {
@@ -38,6 +42,22 @@ const SearchBar = ({ applicationData, setData }) => {
       >
         Search
       </Button>
+      <FormControl
+        style={{width:"10rem"}}
+      >
+        <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={filterDegree}
+          label="Filter"
+          onChange={(e)=>{setFilterDegree(e.target.value)}}
+        >
+          <MenuItem value={'All'} >All</MenuItem>
+          <MenuItem value={'UG_PG'} >UG and PG</MenuItem>
+          <MenuItem value={'PhD'} >PhD</MenuItem>
+        </Select>
+      </FormControl>
     </Stack>
   )
 }

@@ -10,6 +10,7 @@ const AdminView = () => {
   const dispatch = useDispatch()
   const navigate=useNavigate()
   const [data, setData] = useState([])
+  const [filterDegree, setFilterDegree] = useState('All')
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const applicationData = useSelector(state => state.application.applications)
   useEffect(() => {
@@ -26,9 +27,9 @@ const AdminView = () => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <SearchBar applicationData={applicationData} setData={setData} />
+      <SearchBar setFilterDegree={setFilterDegree} filterDegree={filterDegree} applicationData={applicationData} setData={setData} />
       <BackBtn name='Go Back' variant='contained' func={() => navigate('/')} />
-      <ViewForm data={data} />
+      <ViewForm filterDegree={filterDegree} data={data} />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import ApplicationForm from '../components/forms/applicationForm'
 import DocUpload from '../components/forms/documentUpload'
 import FinalSubmit from '../components/forms/finalSubmit'
 import { useSelector } from 'react-redux'
+import { isInclude } from '../helpers/helperFunctions'
 
 const Application = () => {
   const [tab, setTab] = useState(0)
@@ -18,14 +19,14 @@ const Application = () => {
     application_form: null,
     extension_letter: null,
     academic_summary: null,
-    itr_family:null,
+    itr_form:null,
     bank_statement:null,
-    other_docs: null,
+    misc_docs: null,
     remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
   const props = { setTab, inputs, setInputs }
-  const isPhD=userData?.student.branch.toLowerCase().split('.').join('').includes('phd')
+  const isPhD=isInclude(userData?.student.branch,'phd');
   const handleClick=(x)=>{
     switch (x) {
       case 0:

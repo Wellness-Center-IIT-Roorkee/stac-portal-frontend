@@ -63,7 +63,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
           />
           <FormBox
             title='ITR Family'
-            name='itr_family'
+            name='itr_form'
             type='file'
             onChange={handleChange}
           />
@@ -75,7 +75,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
           />
           <MultipleFileUpload
             title="Other Relevent documents"
-            name='other_docs'
+            name='misc_docs'
             type='file'
             onChange={handleMultipleFilesChange}
           />

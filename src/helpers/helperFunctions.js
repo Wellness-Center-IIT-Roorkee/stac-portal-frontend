@@ -55,3 +55,8 @@ export const getFormattedDateTime = data => {
 
 export const getInitials = (name = '') =>
   name.split(' ').map(str => (str ? str[0].toUpperCase() : ''));
+
+export const isInclude = (data,query) =>{
+  var flag = data?.toLowerCase().split('.').join('').includes(query);
+  return flag;
+}

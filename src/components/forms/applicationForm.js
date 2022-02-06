@@ -6,6 +6,7 @@ import { Stack, Select, MenuItem, InputLabel, FormControl } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import { toastWarningMessage } from '../../actions/toastActions'
 import { useNavigate } from 'react-router-dom'
+import { isInclude } from '../../helpers/helperFunctions'
 const ApplicationForm = ({ setTab, inputs, setInputs }) => {
   const userData = useSelector(state => state.user.userData)
   const navigate = useNavigate()
@@ -16,7 +17,7 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
       [e.target.name]: e.target.value
     })
   }
-  const isPhD=userData?.student.branch.toLowerCase().split('.').join('').includes('phd')
+  const isPhD=isInclude(userData?.student.branch,'phd');
   const nextFunc=()=>{
     if(inputs?.phone_number?.length &&( isPhD? (inputs?.hod_email?.length && inputs?.supervisor_email?.length):true)){
       setTab(1);
