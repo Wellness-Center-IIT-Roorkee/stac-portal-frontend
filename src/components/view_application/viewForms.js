@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid'
 import AppModal from './approveModal'
 import { FACULTY } from '../../constants/roles'
 import { STATUS_CHOICES } from '../../constants/application'
+import { isInclude } from '../../helpers/helperFunctions'
 
 const commonColumns = [
   {
@@ -76,15 +77,29 @@ const adminColumns = [
   }
 ]
 
-const ViewForm = ({ data }) => {
+const ViewForm = ({ data, filterDegree }) => {
   const role = useSelector(state => state.user.userData?.role)
+  const [filterData, setFilterData] = React.useState([])
 
+  React.useEffect(() => {
+    const temoData=data.filter((x)=>{
+      const isPhD = isInclude(x?.student.branch,'phd');
+      if(filterDegree==='PhD'&&isPhD){
+        return x;
+      }
+      else if(filterDegree==='UG_PG'&&!isPhD){
+        return x;
+      }
+    })
+    setFilterData(temoData);
+  }, [filterDegree]);
+  
   return (
     <>
       <DataGrid
         style={{ height: '70vh' }}
         disableSelectionOnClick
-        rows={data}
+        rows={filterDegree==='All'?data:filterData}
         columns={role === FACULTY ? facultyColumns : adminColumns}
         sx={{
           '& .MuiDataGrid-row:hover': {

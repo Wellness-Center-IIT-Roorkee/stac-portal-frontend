@@ -15,6 +15,7 @@ import {
 import '../../assets/css/forms/form.css';
 import { formMap } from '../../constants/formMap';
 import SplitButton from './splitBtn';
+import { isInclude } from '../../helpers/helperFunctions';
 
 const AppModal = ({ applicationID }) => {
   const [open, setOpen] = useState(false);
@@ -25,6 +26,7 @@ const AppModal = ({ applicationID }) => {
   const applicationDetail = useSelector(
     (state) => state.application.applicationDetail
   );
+  const isPhD=isInclude(applicationDetail?.student?.branch,'phd');
   const role = useSelector((state) => state.user.userData?.role);
   const formFields = (role==='admin'&&(applicationDetail?.admin_approval_status==='rej'||applicationDetail?.admin_approval_status==='inc')?[...formMap(applicationDetail) , {
     displayName: 'Remarks',
@@ -76,7 +78,12 @@ const AppModal = ({ applicationID }) => {
         </DialogTitle>
         <DialogContent>
           <Grid container spacing={2}>
-            {formFields.map((field, index) => (
+            {formFields.filter((x)=>{
+              if(!isPhD&&(x.displayName==="Supervisor Email"||x.displayName==="HOD Email")){
+                return null;
+              }
+              return x;
+            }).map((field, index) => (
               <React.Fragment key={index}>
                 <Grid item xs={5} style={{ fontWeight: 600 }}>
                   {field.displayName}:
