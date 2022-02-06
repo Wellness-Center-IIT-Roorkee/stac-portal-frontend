@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../assets/css/forms/form.css'
-import { FormBox } from './formComponent'
+import { FormBox,MultipleFileUpload } from './formComponent'
 import {NextBtn,BackBtn} from './formBtn'
 import { Stack } from '@mui/material'
 import { useDispatch } from 'react-redux'
@@ -15,8 +15,19 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
       [e.target.name]: e.target.files[0]
     })
   }
+  const handleMultipleFilesChange = e => {
+    const formData = new FormData()
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append(`file ${i}`,files[i])
+    }
+    setInputs({
+      ...inputs,
+      [e.target.name]: formData
+    })
+  }
   const nextFunc=()=>{
-    if(inputs?.application_form !== null && inputs?.extension_letter !== null && inputs?.academic_summary !== null){
+    if(inputs?.application_form !== null){
       setTab(2);
     }else{
       dispatch(toastWarningMessage('Please upload mandatory documents'));
@@ -36,6 +47,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
             name='application_form'
             type='file'
             onChange={handleChange}
+            required={true}
           />
           <FormBox
             title='Extension Letter'
@@ -48,6 +60,24 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
             name='academic_summary'
             type='file'
             onChange={handleChange}
+          />
+          <FormBox
+            title='ITR Family'
+            name='itr_family'
+            type='file'
+            onChange={handleChange}
+          />
+          <FormBox
+            title="Guardian's Bank Statement"
+            name='bank_statement'
+            type='file'
+            onChange={handleChange}
+          />
+          <MultipleFileUpload
+            title="Other Relevent documents"
+            name='other_docs'
+            type='file'
+            onChange={handleMultipleFilesChange}
           />
         </div>
         <div>

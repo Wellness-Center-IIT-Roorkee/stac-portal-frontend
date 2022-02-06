@@ -53,6 +53,9 @@
   color: #161616;
   padding-bottom: 8%;
 }
+.info-name span{
+  color: rgb(216, 36, 13);
+}
 .info-val {
   border: none;
   border-bottom: 1px solid #666666;
@@ -63,6 +66,19 @@
   line-height: 1.688rem;
   color: #5c5c5c !important;
   width: 100%;
+}
+.info-val-mul {
+  border: none;
+  border-bottom: 1px solid #666666;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.375rem;
+  line-height: 1.688rem;
+  color: #5c5c5c !important;
+  width: 125%;
+  padding-bottom: 3px;
+  transform: scale(0.8) translateX(-12.5%);
 }
 .wl-st-status{
   font-family: Inter;

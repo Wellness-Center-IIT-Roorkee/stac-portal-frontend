@@ -18,22 +18,26 @@ const Application = () => {
     application_form: null,
     extension_letter: null,
     academic_summary: null,
+    itr_family:null,
+    bank_statement:null,
+    other_docs: null,
     remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
   const props = { setTab, inputs, setInputs }
+  const isPhD=userData?.student.branch.toLowerCase().split('.').join('').includes('phd')
   const handleClick=(x)=>{
     switch (x) {
       case 0:
         setTab(0)
         break;
       case 1:
-        if(inputs?.phone_number?.length && inputs?.applied_semester?.length && inputs?.hod_email?.length && inputs?.supervisor_email?.length){
+        if(inputs?.phone_number?.length &&( isPhD? (inputs?.hod_email?.length && inputs?.supervisor_email?.length):true)){
           setTab(1);
         }
         break;
       case 2:
-        if(inputs?.application_form !== null && inputs?.extension_letter !== null && inputs?.academic_summary !== null){
+        if(inputs?.application_form !== null){
           setTab(2);
         }
         break;
