@@ -25,11 +25,14 @@ const AdminView = () => {
     return
   }, [applicationData])
 
+  const [filterData, setFilterData] = React.useState([])
+  const [search, setSearch] = useState('')
+
   return (
     <div style={{ padding: '1rem' }}>
-      <SearchBar setFilterDegree={setFilterDegree} filterDegree={filterDegree} applicationData={applicationData} setData={setData} />
+      <SearchBar setFilterData={setFilterData} setSearch={setSearch} search={search} setFilterDegree={setFilterDegree} filterDegree={filterDegree} applicationData={applicationData} setData={setData} />
       <BackBtn name='Go Back' variant='contained' func={() => navigate('/')} />
-      <ViewForm filterDegree={filterDegree} data={data} />
+      <ViewForm setFilterData={setFilterData} filterData={filterData} search={search} filterDegree={filterDegree} data={data}/>
     </div>
   )
 }

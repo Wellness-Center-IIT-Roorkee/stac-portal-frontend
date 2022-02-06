@@ -6,12 +6,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import '../../assets/css/forms/form.css'
 
-const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree }) => {
-  const [search, setSearch] = useState('')
-
+const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree, setSearch, search, setFilterData, }) => {
+  
   const filterData = () => {
-    setData(
-      applicationData.filter(rowData => {
+    const tempData=applicationData.filter(rowData => {
         const student = rowData.student
         return (
           student.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -19,7 +17,8 @@ const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree }) 
           student.enrollment_number.includes(search)
         )
       })
-    )
+    setData(tempData)
+    setFilterData(tempData)
   }
 
   return (
