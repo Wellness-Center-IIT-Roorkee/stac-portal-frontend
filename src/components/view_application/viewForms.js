@@ -77,12 +77,11 @@ const adminColumns = [
   }
 ]
 
-const ViewForm = ({ data, filterDegree }) => {
+const ViewForm = ({ data, filterDegree, setData, search ,filterData, setFilterData }) => {
   const role = useSelector(state => state.user.userData?.role)
-  const [filterData, setFilterData] = React.useState([])
 
   React.useEffect(() => {
-    const temoData=data.filter((x)=>{
+    const tempData=data.filter((x)=>{
       const isPhD = isInclude(x?.student.branch,'phd');
       if(filterDegree==='PhD'&&isPhD){
         return x;
@@ -91,8 +90,8 @@ const ViewForm = ({ data, filterDegree }) => {
         return x;
       }
     })
-    setFilterData(temoData);
-  }, [filterDegree]);
+    setFilterData(tempData);
+  }, [filterDegree,search]);
   
   return (
     <>
