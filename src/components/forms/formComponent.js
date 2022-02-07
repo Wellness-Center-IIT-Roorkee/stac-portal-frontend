@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../assets/css/forms/form.css'
 import { Input, Link, } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close';
 const FormDisabled = props => {
   return (
     <div style={props.style} className='wl-st-form-box'>
@@ -37,6 +38,7 @@ const FormBox = props => {
   )
 }
 const MultipleFileUpload = props => {
+  const [openMultiple, setOpenMultiple] = React.useState(false);
   return (
     <div style={props.style} className='wl-st-form-box'>
       <label title={props.required?'Mandatory Field':""} className='info-name'>{props.title} <span>{props.required?'*':""}</span></label>
@@ -51,18 +53,28 @@ const MultipleFileUpload = props => {
         multiple='multiple'
         placeholder={props.ph}
       />
-      {props.helperElement ? props.helperElement.map((item,index)=>{
-        return(
-          <Link
-            href={item}
-            target='_blank'
-            rel='noreferer'
-            style={{marginRight:"1.5rem"}}
-          >
-            View Current File No. {index+1}
-          </Link>
-        )
-      }) : ''}
+      {
+      <Link style={{cursor:'pointer'}} onClick={()=>setOpenMultiple(!openMultiple)}>
+      View Other Documents
+      {
+        openMultiple &&
+        <div className='multipleModal'>
+          <div className='multipleModalChild'>
+            <CloseIcon onClick={()=>setOpenMultiple(false)} className='multipleModalClose' />
+            {
+              props?.helperElement ?
+              props?.helperElement?.map((item,i)=>{
+                return(
+                  <Link className='multipleModalLink' href={item} target='_blank' rel='noreferer'>
+                    View document {i+1}
+                  </Link>
+                )
+              }):<div>No Relevent Document</div>
+            }
+          </div>
+        </div>
+      }
+    </Link> }
     </div>
   )
 }

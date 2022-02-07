@@ -62,5 +62,20 @@ export const formMap = formData => [
     displayName: 'Academic Summary',
     value: formData?.academic_summary,
     type: 'file'
+  },
+  {
+    displayName: 'ITR Family',
+    value: formData?.itr_form,
+    type: 'file'
+  },
+  {
+    displayName: "Guardian's Bank Statement",
+    value: formData?.bank_statement,
+    type: 'file'
+  },
+  {
+    displayName: "Other Relevent documents",
+    value: formData?.miscellaneous_documents,
+    type: 'multiple'
   }
 ]

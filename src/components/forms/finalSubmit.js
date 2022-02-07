@@ -12,7 +12,9 @@ const FinalSubmit = ({ setTab, inputs }) => {
   const handleSubmit = e => {
     const formData = new FormData()
     e.preventDefault()
-    Object.keys(inputs).forEach(input => formData.append(input, inputs[input]))
+    const {miscellaneous_documents,...inputsWithOutMisc}=inputs
+    Object.keys(inputsWithOutMisc).forEach(input => formData.append(input, inputs[input]?inputs[input]:''))
+    miscellaneous_documents?.forEach(file => formData.append('miscellaneous_documents', file))
     const call =()=>{
       navigate('/')
     }

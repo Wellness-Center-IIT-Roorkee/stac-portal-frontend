@@ -16,14 +16,10 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
     })
   }
   const handleMultipleFilesChange = e => {
-    const formData = new FormData()
     const files = e.target.files;
-    for (let i = 0; i < files.length; i++) {
-      formData.append(`file ${i}`,files[i])
-    }
     setInputs({
       ...inputs,
-      [e.target.name]: formData
+      [e.target.name]: files
     })
   }
   const nextFunc=()=>{

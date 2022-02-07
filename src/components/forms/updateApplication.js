@@ -34,9 +34,9 @@ const UpdateApplication = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: null,
+    miscellaneous_documents: '',
   })
-  const isPhD = isInclude(applicationData?.student.branch,'phd');
+  const isPhD = isInclude(applicationData?.student?.branch,'phd');
   const handleChange = e => {
     setData({
       ...data,
@@ -50,14 +50,10 @@ const UpdateApplication = () => {
     })
   }
   const handleMultipleFilesChange = e => {
-    const formData = new FormData()
     const files = e.target.files;
-    for (let i = 0; i < files.length; i++) {
-      formData.append(`file ${i}`,files[i])
-    }
     setData({
       ...data,
-      [e.target.name]: formData
+      [e.target.name]: files
     })
   }
   const sendUpdateRequest = () => {
@@ -67,6 +63,9 @@ const UpdateApplication = () => {
         formData.append(dataItem, data[dataItem])
       }
     })
+    const {miscellaneous_documents,...dataWithOutMisc}=data
+    Object.keys(dataWithOutMisc).forEach(dataItem => formData.append(dataItem, data[dataItem]?data[dataItem]:''))
+    miscellaneous_documents?.forEach(file => formData.append('miscellaneous_documents', file))
     const call =()=>{
       navigate('/')
     }
