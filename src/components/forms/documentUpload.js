@@ -75,7 +75,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
           />
           <MultipleFileUpload
             title="Other Relevent documents"
-            name='misc_docs'
+            name='miscellaneous_documents'
             type='file'
             onChange={handleMultipleFilesChange}
           />
