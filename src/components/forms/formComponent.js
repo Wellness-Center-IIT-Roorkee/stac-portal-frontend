@@ -53,7 +53,7 @@ const MultipleFileUpload = props => {
         multiple='multiple'
         placeholder={props.ph}
       />
-      {
+      {!props.isNewApplicationForm &&
       <Link style={{cursor:'pointer'}} onClick={()=>setOpenMultiple(!openMultiple)}>
       View Other Documents
       {
@@ -62,10 +62,10 @@ const MultipleFileUpload = props => {
           <div className='multipleModalChild'>
             <CloseIcon onClick={()=>setOpenMultiple(false)} className='multipleModalClose' />
             {
-              props?.helperElement ?
-              props?.helperElement?.map((item,i)=>{
+              props?.helperElementData ?
+              props?.helperElementData?.map((item,i)=>{
                 return(
-                  <Link className='multipleModalLink' href={item} target='_blank' rel='noreferer'>
+                  <Link className='multipleModalLink' href={item?.document} target='_blank' rel='noreferer'>
                     View document {i+1}
                   </Link>
                 )

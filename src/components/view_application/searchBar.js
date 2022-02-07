@@ -26,6 +26,7 @@ const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree, se
       direction={{ xs: 'column', sm: 'row' }}
       spacing={{ xs: 1, sm: 5, md: 5 }}
       sx={{ margin: '2rem' }}
+      alignItems={{xs:"flex-start",sm:"center",md:"center",xl:"center"}}
     >
       <Input
         sx={{ width: 420 }}
@@ -37,6 +38,9 @@ const SearchBar = ({ applicationData, setData, setFilterDegree, filterDegree, se
       <Button
         sx={{ bgcolor: 'black' }}
         variant='contained'
+        style={{
+          height:"80%"
+        }}
         onClick={() => filterData()}
       >
         Search

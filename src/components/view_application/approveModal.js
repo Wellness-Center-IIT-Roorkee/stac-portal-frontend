@@ -108,7 +108,7 @@ const AppModal = ({ applicationID }) => {
                               field?.value ?
                               field?.value?.map((item,i)=>{
                                 return(
-                                  <Link className='multipleModalLink' href={item} target='_blank' rel='noreferer'>
+                                  <Link className='multipleModalLink' href={item?.document} target='_blank' rel='noreferer'>
                                     View document {i+1}
                                   </Link>
                                 )

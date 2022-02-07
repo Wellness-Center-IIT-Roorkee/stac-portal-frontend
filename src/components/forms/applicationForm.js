@@ -98,6 +98,7 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
                 name='supervisor_email'
                 value={inputs.supervisor_email}
                 onChange={handleChange}
+                required={true}
               />
               <FormBox
                 title='Head of Dept. Email Id'
@@ -106,6 +107,7 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
                 name='hod_email'
                 value={inputs.hod_email}
                 onChange={handleChange}
+                required={true}
               />
             </>
           }

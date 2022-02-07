@@ -3,12 +3,14 @@ import '../../assets/css/forms/form.css'
 import { FormBox,MultipleFileUpload } from './formComponent'
 import {NextBtn,BackBtn} from './formBtn'
 import { Stack } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toastWarningMessage } from '../../actions/toastActions'
+import { isInclude } from '../../helpers/helperFunctions'
 
 
 const DocUpload = ({ setTab, inputs, setInputs }) => {
   const dispatch = useDispatch()
+  const userData = useSelector(state => state.user.userData)
   const handleChange = e => {
     setInputs({
       ...inputs,
@@ -19,16 +21,17 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
     const files = e.target.files;
     setInputs({
       ...inputs,
-      [e.target.name]: files
+      [e.target.name]: [...files]
     })
   }
   const nextFunc=()=>{
-    if(inputs?.application_form !== null){
+    if(inputs?.application_form !== null && (isPhD?true:inputs?.itr_form !== null)){
       setTab(2);
     }else{
       dispatch(toastWarningMessage('Please upload mandatory documents'));
     }
   }
+  const isPhD=isInclude(userData?.student?.branch,'phd');
   return (
     <div className='wl-st-form-parent'>
       <form className='wl-st-form wl-st-form-max-width-fix'>
@@ -62,6 +65,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
             name='itr_form'
             type='file'
             onChange={handleChange}
+            required={!isPhD}
           />
           <FormBox
             title="Guardian's Bank Statement"
@@ -74,6 +78,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
             name='miscellaneous_documents'
             type='file'
             onChange={handleMultipleFilesChange}
+            isNewApplicationForm={true}
           />
         </div>
         <div>
