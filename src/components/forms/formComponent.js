@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../assets/css/forms/form.css'
-import { Input } from '@mui/material'
+import { Input, Link, } from '@mui/material'
 const FormDisabled = props => {
   return (
     <div style={props.style} className='wl-st-form-box'>
@@ -51,6 +51,18 @@ const MultipleFileUpload = props => {
         multiple='multiple'
         placeholder={props.ph}
       />
+      {props.helperElement ? props.helperElement.map((item,index)=>{
+        return(
+          <Link
+            href={item}
+            target='_blank'
+            rel='noreferer'
+            style={{marginRight:"1.5rem"}}
+          >
+            View Current File No. {index+1}
+          </Link>
+        )
+      }) : ''}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { FormBox, FormDisabled } from './formComponent'
+import { FormBox, FormDisabled,MultipleFileUpload } from './formComponent'
 import '../../assets/css/forms/form.css'
 import {FormBtn,BackBtn} from './formBtn'
 import {
@@ -15,6 +15,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { updateApplication } from '../../actions/applicationActions'
 import { STATUS_CHOICES } from '../../constants/application'
+import { isInclude } from '../../helpers/helperFunctions'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
@@ -30,8 +31,12 @@ const UpdateApplication = () => {
     hod_email: applicationData?.hod_email,
     application_form: null,
     extension_letter: null,
-    academic_summary: null
+    academic_summary: null,
+    itr_form:null,
+    bank_statement:null,
+    miscellaneous_documents: null,
   })
+  const isPhD = isInclude(applicationData?.student.branch,'phd');
   const handleChange = e => {
     setData({
       ...data,
@@ -42,6 +47,17 @@ const UpdateApplication = () => {
     setData({
       ...data,
       [e.target.name]: e.target.files[0]
+    })
+  }
+  const handleMultipleFilesChange = e => {
+    const formData = new FormData()
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append(`file ${i}`,files[i])
+    }
+    setData({
+      ...data,
+      [e.target.name]: formData
     })
   }
   const sendUpdateRequest = () => {
@@ -124,23 +140,30 @@ const UpdateApplication = () => {
             type='number'
             ph='Enter your number'
             name='phone_number'
+            required={true}
           />
-          <FormBox
-            title="Supervisor's Email Id"
-            type='email'
-            ph='Enter email'
-            name='supervisor_email'
-            value={data.supervisor_email}
-            onChange={handleChange}
-          />
-          <FormBox
-            title='Head of Dept. Email Id'
-            type='email'
-            ph='Enter email'
-            name='hod_email'
-            value={data.hod_email}
-            onChange={handleChange}
-          />
+          {
+            isPhD ?
+            <>
+              <FormBox
+                title="Supervisor's Email Id"
+                type='email'
+                ph='Enter email'
+                name='supervisor_email'
+                value={data.supervisor_email}
+                onChange={handleChange}
+              />
+              <FormBox
+                title='Head of Dept. Email Id'
+                type='email'
+                ph='Enter email'
+                name='hod_email'
+                value={data.hod_email}
+                onChange={handleChange}
+              />
+            </>
+            :""
+          }
           <FormBox
             title='Application Form'
             name='application_form'
@@ -155,6 +178,7 @@ const UpdateApplication = () => {
                 View Current File
               </Link>
             }
+            required={true}
           />
           <FormBox
             title='Extension Letter'
@@ -184,6 +208,45 @@ const UpdateApplication = () => {
               >
                 View Current File
               </Link>
+            }
+          />
+          <FormBox
+            title='ITR Family'
+            name='itr_form'
+            type='file'
+            onChange={handleFileChange}
+            helperElement={
+              <Link
+                href={applicationData?.itr_form}
+                target='_blank'
+                rel='noreferer'
+              >
+                View Current File
+              </Link>
+            }
+          />
+          <FormBox
+            title="Guardian's Bank Statement"
+            name='bank_statement'
+            type='file'
+            onChange={handleFileChange}
+            helperElement={
+              <Link
+                href={applicationData?.bank_statement}
+                target='_blank'
+                rel='noreferer'
+              >
+                View Current File
+              </Link>
+            }
+          />
+          <MultipleFileUpload
+            title="Other Relevent documents"
+            name='miscellaneous_documents'
+            type='file'
+            onChange={handleMultipleFilesChange}
+            helperElementData={
+              applicationData?.miscellaneous_documents
             }
           />
           
