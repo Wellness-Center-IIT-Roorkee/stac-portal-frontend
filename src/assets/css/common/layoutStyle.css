@@ -60,6 +60,14 @@
 .wl_sp_lp_lft p div{
     margin-bottom: 1.1rem;
 }
+.wl_sp_lp_lft p div span{
+    font-weight: bold;
+    border-bottom: 2px solid #2F2A69;
+}
+.wl_sp_lp_lft2 p div span{
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+}
 .wl_sp_lp_lft p div:last-child{
     margin-bottom: 2rem;
 }

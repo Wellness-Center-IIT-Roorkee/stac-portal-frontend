@@ -21,7 +21,7 @@ const Application = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: '',
+    miscellaneous_documents: [],
     remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
@@ -57,25 +57,25 @@ const Application = () => {
             financial support, as mentioned below.
           </div>
           <div>
-            1. Last date to receive application- 15thJanuary
+            1. Last date to receive application- <span>15thJanuary</span>
           </div>
           <div>
             Meeting date- Last week of January
           </div>
           <div>
-            2. Last date to receive application- 15thApril
+            2. Last date to receive application- <span>15thApril</span>
           </div>
           <div>
             Meeting date- Last week of April
           </div>
           <div>
-            3. Last date to receive application- 15thJuly
+            3. Last date to receive application- <span>15thJuly</span>
           </div>
           <div>
             Meeting date- Last week of July
           </div>
           <div>
-            4. Last date to receive application- 15thOctober
+            4. Last date to receive application- <span>15thOctober</span>
           </div>
           <div>
             Meeting date- Last week of October

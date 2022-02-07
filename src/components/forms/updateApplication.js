@@ -34,7 +34,7 @@ const UpdateApplication = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: '',
+    miscellaneous_documents: [],
   })
   const isPhD = isInclude(applicationData?.student?.branch,'phd');
   const handleChange = e => {
@@ -53,16 +53,11 @@ const UpdateApplication = () => {
     const files = e.target.files;
     setData({
       ...data,
-      [e.target.name]: files
+      [e.target.name]: [...files]
     })
   }
   const sendUpdateRequest = () => {
     const formData = new FormData()
-    Object.keys(data).forEach(dataItem => {
-      if (data[dataItem]) {
-        formData.append(dataItem, data[dataItem])
-      }
-    })
     const {miscellaneous_documents,...dataWithOutMisc}=data
     Object.keys(dataWithOutMisc).forEach(dataItem => formData.append(dataItem, data[dataItem]?data[dataItem]:''))
     miscellaneous_documents?.forEach(file => formData.append('miscellaneous_documents', file))
@@ -151,6 +146,7 @@ const UpdateApplication = () => {
                 name='supervisor_email'
                 value={data.supervisor_email}
                 onChange={handleChange}
+                required={true}
               />
               <FormBox
                 title='Head of Dept. Email Id'
@@ -159,6 +155,7 @@ const UpdateApplication = () => {
                 name='hod_email'
                 value={data.hod_email}
                 onChange={handleChange}
+                required={true}
               />
             </>
             :""
@@ -223,6 +220,7 @@ const UpdateApplication = () => {
                 View Current File
               </Link>
             }
+            required={!isPhD}
           />
           <FormBox
             title="Guardian's Bank Statement"
