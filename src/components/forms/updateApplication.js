@@ -34,7 +34,7 @@ const UpdateApplication = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: '',
+    miscellaneous_documents: [],
   })
   const isPhD = isInclude(applicationData?.student?.branch,'phd');
   const handleChange = e => {
@@ -53,17 +53,12 @@ const UpdateApplication = () => {
     const files = e.target.files;
     setData({
       ...data,
-      [e.target.name]: files
+      [e.target.name]: [...files]
     })
   }
   const sendUpdateRequest = () => {
     const formData = new FormData()
-    Object.keys(data).forEach(dataItem => {
-      if (data[dataItem]) {
-        formData.append(dataItem, data[dataItem])
-      }
-    })
-    const {miscellaneous_documents,...dataWithOutMisc}=data
+    const {miscellaneous_documents, ...dataWithOutMisc}=data
     Object.keys(dataWithOutMisc).forEach(dataItem => formData.append(dataItem, data[dataItem]?data[dataItem]:''))
     miscellaneous_documents?.forEach(file => formData.append('miscellaneous_documents', file))
     const call =()=>{
@@ -248,7 +243,6 @@ const UpdateApplication = () => {
               applicationData?.miscellaneous_documents
             }
           />
-          
         </div>
         <Stack
                 direction={{ xs: 'column', sm: 'row-reverse' }}

@@ -19,7 +19,7 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
     const files = e.target.files;
     setInputs({
       ...inputs,
-      [e.target.name]: files
+      [e.target.name]: [...files]
     })
   }
   const nextFunc=()=>{

@@ -21,7 +21,7 @@ const Application = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: '',
+    miscellaneous_documents: [],
     remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
