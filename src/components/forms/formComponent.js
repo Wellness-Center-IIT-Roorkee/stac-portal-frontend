@@ -62,7 +62,7 @@ const MultipleFileUpload = props => {
           <div className='multipleModalChild'>
             <CloseIcon onClick={()=>setOpenMultiple(false)} className='multipleModalClose' />
             {
-              props?.helperElementData ?
+              props?.helperElementData?.length ?
               props?.helperElementData?.map((item,i)=>{
                 return(
                   <Link className='multipleModalLink' href={item?.document} target='_blank' rel='noreferer'>

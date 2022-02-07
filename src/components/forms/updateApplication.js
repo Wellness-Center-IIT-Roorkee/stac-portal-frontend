@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { FormBox, FormDisabled,MultipleFileUpload } from './formComponent'
+import { FormBox, FormDisabled, MultipleFileUpload } from './formComponent'
 import '../../assets/css/forms/form.css'
-import {FormBtn,BackBtn} from './formBtn'
+import { FormBtn, BackBtn } from './formBtn'
 import {
   Select,
   MenuItem,
@@ -19,7 +19,7 @@ import { isInclude } from '../../helpers/helperFunctions'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const { id } = useParams()
   const applicationData = useSelector(
     state => state.application.applicationDetail
@@ -32,11 +32,11 @@ const UpdateApplication = () => {
     application_form: null,
     extension_letter: null,
     academic_summary: null,
-    itr_form:null,
-    bank_statement:null,
-    miscellaneous_documents: [],
+    itr_form: null,
+    bank_statement: null,
+    miscellaneous_documents: []
   })
-  const isPhD = isInclude(applicationData?.student?.branch,'phd');
+  const isPhD = isInclude(applicationData?.student?.branch, 'phd')
   const handleChange = e => {
     setData({
       ...data,
@@ -50,7 +50,7 @@ const UpdateApplication = () => {
     })
   }
   const handleMultipleFilesChange = e => {
-    const files = e.target.files;
+    const files = e.target.files
     setData({
       ...data,
       [e.target.name]: [...files]
@@ -58,10 +58,16 @@ const UpdateApplication = () => {
   }
   const sendUpdateRequest = () => {
     const formData = new FormData()
-    const {miscellaneous_documents,...dataWithOutMisc}=data
-    Object.keys(dataWithOutMisc).forEach(dataItem => formData.append(dataItem, data[dataItem]?data[dataItem]:''))
-    miscellaneous_documents?.forEach(file => formData.append('miscellaneous_documents', file))
-    const call =()=>{
+    const { miscellaneous_documents, ...dataWithOutMisc } = data
+    Object.keys(dataWithOutMisc).forEach(dataItem => {
+      if (data[dataItem]) {
+        formData.append(dataItem, data[dataItem] ? data[dataItem] : '')
+      }
+    })
+    miscellaneous_documents?.forEach(file =>
+      formData.append('miscellaneous_documents', file)
+    )
+    const call = () => {
       navigate('/')
     }
     dispatch(updateApplication({ id, formData, call }))
@@ -72,16 +78,24 @@ const UpdateApplication = () => {
       <form className='wl-st-form wl-st-form-max-width-fix'>
         <div>
           <div>
-            <h3 className="wl-st-status">STATUS: {STATUS_CHOICES.find((x)=>x.value===(applicationData?.status))?.displayName}</h3>
-            {
-              (applicationData?.status === 'rej'||applicationData?.status === 'inc') &&
-              <h3 className="wl-st-remarks">{applicationData?.remarks}</h3>
-            }
+            <h3 className='wl-st-status'>
+              STATUS:{' '}
+              {
+                STATUS_CHOICES.find(x => x.value === applicationData?.status)
+                  ?.displayName
+              }
+            </h3>
+            {(applicationData?.status === 'rej' ||
+              applicationData?.status === 'inc') && (
+              <h3 className='wl-st-remarks'>{applicationData?.remarks}</h3>
+            )}
           </div>
-          <Stack
-                direction={{ xs: 'column', sm: 'row' }}
-              >
-                <BackBtn name='Go Back' variant='contained' func={()=>navigate('/')} />
+          <Stack direction={{ xs: 'column', sm: 'row' }}>
+            <BackBtn
+              name='Go Back'
+              variant='contained'
+              func={() => navigate('/')}
+            />
           </Stack>
           <FormDisabled
             title='Name'
@@ -136,8 +150,7 @@ const UpdateApplication = () => {
             name='phone_number'
             required={true}
           />
-          {
-            isPhD ?
+          {isPhD ? (
             <>
               <FormBox
                 title="Supervisor's Email Id"
@@ -158,8 +171,9 @@ const UpdateApplication = () => {
                 required={true}
               />
             </>
-            :""
-          }
+          ) : (
+            ''
+          )}
           <FormBox
             title='Application Form'
             name='application_form'
@@ -238,21 +252,16 @@ const UpdateApplication = () => {
             }
           />
           <MultipleFileUpload
-            title="Other Relevent documents"
+            title='Other Relevent documents'
             name='miscellaneous_documents'
             type='file'
             onChange={handleMultipleFilesChange}
-            helperElementData={
-              applicationData?.miscellaneous_documents
-            }
+            helperElementData={applicationData?.miscellaneous_documents}
           />
-          
         </div>
-        <Stack
-                direction={{ xs: 'column', sm: 'row-reverse' }}
-              >
-                <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
-          </Stack>
+        <Stack direction={{ xs: 'column', sm: 'row-reverse' }}>
+          <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+        </Stack>
       </form>
     </div>
   )
