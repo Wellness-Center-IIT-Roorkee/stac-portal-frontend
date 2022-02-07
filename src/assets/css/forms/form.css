@@ -102,3 +102,36 @@
   margin-bottom: 0.8rem !important;
   margin-left: 1.2rem !important;
 }
+.multipleModal{
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.multipleModalChild{
+  background: #fff;
+  /* width: 35%;
+  height: 60%; */
+  padding: 2rem  3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+}
+.multipleModalClose{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.multipleModalLink{
+  margin: 0.8rem 0 !important;
+}

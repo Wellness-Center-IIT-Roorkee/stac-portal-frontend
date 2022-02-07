@@ -19,6 +19,7 @@ import { isInclude } from '../../helpers/helperFunctions';
 
 const AppModal = ({ applicationID }) => {
   const [open, setOpen] = useState(false);
+  const [openMultiple, setOpenMultiple] = useState(false);
   const [remarks, setRemarks] = useState(null);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -50,7 +51,6 @@ const AppModal = ({ applicationID }) => {
     );
     handleClose();
   };
-
   return (
     <div>
       <Button onClick={handleOpen}>View Application</Button>
@@ -96,7 +96,30 @@ const AppModal = ({ applicationID }) => {
                   ) : field.type === 'choice' ? (
                     field.choices.find((choice) => choice.value === field.value)
                       ?.displayName
-                  ) : (
+                  ) : field.type === 'multiple'?(
+                    <Link style={{cursor:'pointer'}} onClick={()=>setOpenMultiple(!openMultiple)}>
+                      View {field.displayName}
+                      {
+                        openMultiple &&
+                        <div onClick={()=>{setOpen(true);setOpenMultiple(true)}} className='multipleModal'>
+                          <div className='multipleModalChild'>
+                            <CloseIcon onClick={()=>setOpenMultiple(false)} className='multipleModalClose' />
+                            {
+                              field?.value ?
+                              field?.value?.map((item,i)=>{
+                                return(
+                                  <Link className='multipleModalLink' href={item} target='_blank' rel='noreferer'>
+                                    View document {i+1}
+                                  </Link>
+                                )
+                              }):<div>No Relevent Document</div>
+                            }
+                          </div>
+                        </div>
+                      }
+                    </Link>
+                  ) :
+                  (
                     field.value
                   )}
                 </Grid>

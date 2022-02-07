@@ -17,7 +17,7 @@ const ApplicationForm = ({ setTab, inputs, setInputs }) => {
       [e.target.name]: e.target.value
     })
   }
-  const isPhD=isInclude(userData?.student.branch,'phd');
+  const isPhD=isInclude(userData?.student?.branch,'phd');
   const nextFunc=()=>{
     if(inputs?.phone_number?.length &&( isPhD? (inputs?.hod_email?.length && inputs?.supervisor_email?.length):true)){
       setTab(1);

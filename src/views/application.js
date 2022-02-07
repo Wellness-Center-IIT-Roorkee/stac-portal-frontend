@@ -21,12 +21,12 @@ const Application = () => {
     academic_summary: null,
     itr_form:null,
     bank_statement:null,
-    miscellaneous_documents: null,
+    miscellaneous_documents: '',
     remarks:''
   }
   const [inputs, setInputs] = useState(initValues)
   const props = { setTab, inputs, setInputs }
-  const isPhD=isInclude(userData?.student.branch,'phd');
+  const isPhD=isInclude(userData?.student?.branch,'phd');
   const handleClick=(x)=>{
     switch (x) {
       case 0:

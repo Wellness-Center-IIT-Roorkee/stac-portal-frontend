@@ -82,7 +82,7 @@ const ViewForm = ({ data, filterDegree, setData, search ,filterData, setFilterDa
 
   React.useEffect(() => {
     const tempData=data.filter((x)=>{
-      const isPhD = isInclude(x?.student.branch,'phd');
+      const isPhD = isInclude(x?.student?.branch,'phd');
       if(filterDegree==='PhD'&&isPhD){
         return x;
       }
