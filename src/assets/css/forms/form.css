@@ -135,3 +135,6 @@
 .multipleModalLink{
   margin: 0.8rem 0 !important;
 }
+.btnLoader svg{
+  transform: scale(0.5) !important;
+}
