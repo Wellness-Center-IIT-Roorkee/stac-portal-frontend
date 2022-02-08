@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateApplication } from '../../actions/applicationActions'
 import { STATUS_CHOICES } from '../../constants/application'
 import { isInclude } from '../../helpers/helperFunctions'
+import { CircularProgress } from '@mui/material'
 
 const UpdateApplication = () => {
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const UpdateApplication = () => {
   const applicationData = useSelector(
     state => state.application.applicationDetail
   )
+  const updateApplicationPending = useSelector(state => state?.application?.updateApplicationPending)
   const [data, setData] = useState({
     applied_semester: applicationData?.applied_semester,
     phone_number: applicationData?.phone_number,
@@ -260,7 +262,22 @@ const UpdateApplication = () => {
           />
         </div>
         <Stack direction={{ xs: 'column', sm: 'row-reverse' }}>
-          <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+          {
+            updateApplicationPending ?
+            <div style={{
+              backgroundColor: "#1976d2",
+              boxShadow: "0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)",
+              color:"#fff",
+              padding:"0 2rem",
+              height:"33px",
+              display:"flex",
+              alignItems:"center",
+              justifyContent:"center",
+            }}>
+              <CircularProgress className="btnLoader" style={{color:"#fff"}} />
+            </div>:
+            <FormBtn name='Update' variant='contained' func={sendUpdateRequest} />
+          }
         </Stack>
       </form>
     </div>
