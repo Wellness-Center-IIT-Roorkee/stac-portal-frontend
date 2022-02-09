@@ -91,7 +91,9 @@ const AppModal = ({ applicationID }) => {
                 if (
                   !isPhD &&
                   (x.displayName === 'Supervisor Email' ||
-                    x.displayName === 'HOD Email')
+                    x.displayName === 'HOD Email' ||
+                    x.displayName === 'Extension Letter' || 
+                    x.displayName === 'Academic Summary')
                 ) {
                   return null
                 }

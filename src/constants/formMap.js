@@ -49,7 +49,7 @@ export const formMap = formData => [
     type: 'text'
   },
   {
-    displayName: 'Application Form',
+    displayName: 'Application Letter',
     value: formData?.application_form,
     type: 'file'
   },
@@ -64,7 +64,7 @@ export const formMap = formData => [
     type: 'file'
   },
   {
-    displayName: 'ITR Family',
+    displayName: 'Family Income Tax Return',
     value: formData?.itr_form,
     type: 'file'
   },
