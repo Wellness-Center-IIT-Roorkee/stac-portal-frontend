@@ -177,7 +177,7 @@ const UpdateApplication = () => {
             ''
           )}
           <FormBox
-            title='Application Form'
+            title='Application Letter'
             name='application_form'
             type='file'
             onChange={handleFileChange}
@@ -192,38 +192,43 @@ const UpdateApplication = () => {
             }
             required={true}
           />
+          {
+            isPhD ?
+            <>
+            <FormBox
+              title='Extension Letter'
+              name='extension_letter'
+              type='file'
+              onChange={handleFileChange}
+              helperElement={
+                <Link
+                  href={applicationData?.extension_letter}
+                  target='_blank'
+                  rel='noreferer'
+                >
+                  View Current File
+                </Link>
+              }
+            />
+            <FormBox
+              title='Academic Summary'
+              name='academic_summary'
+              type='file'
+              onChange={handleFileChange}
+              helperElement={
+                <Link
+                  href={applicationData?.academic_summary}
+                  target='_blank'
+                  rel='noreferer'
+                >
+                  View Current File
+                </Link>
+              }
+            />
+            </>:""
+          }
           <FormBox
-            title='Extension Letter'
-            name='extension_letter'
-            type='file'
-            onChange={handleFileChange}
-            helperElement={
-              <Link
-                href={applicationData?.extension_letter}
-                target='_blank'
-                rel='noreferer'
-              >
-                View Current File
-              </Link>
-            }
-          />
-          <FormBox
-            title='Academic Summary'
-            name='academic_summary'
-            type='file'
-            onChange={handleFileChange}
-            helperElement={
-              <Link
-                href={applicationData?.academic_summary}
-                target='_blank'
-                rel='noreferer'
-              >
-                View Current File
-              </Link>
-            }
-          />
-          <FormBox
-            title='ITR Family'
+            title='Family Income Tax Return'
             name='itr_form'
             type='file'
             onChange={handleFileChange}

@@ -42,26 +42,31 @@ const DocUpload = ({ setTab, inputs, setInputs }) => {
               <BackBtn name='Go Back' variant='contained' func={() => setTab(0)} />
           </Stack>
           <FormBox
-            title='Application Form'
+            title='Application Letter'
             name='application_form'
             type='file'
             onChange={handleChange}
             required={true}
           />
+          {
+            isPhD ?
+            <>
+            <FormBox
+              title='Extension Letter'
+              name='extension_letter'
+              type='file'
+              onChange={handleChange}
+            />
+            <FormBox
+              title='Academic Summary'
+              name='academic_summary'
+              type='file'
+              onChange={handleChange}
+            />
+            </>:""
+          }
           <FormBox
-            title='Extension Letter'
-            name='extension_letter'
-            type='file'
-            onChange={handleChange}
-          />
-          <FormBox
-            title='Academic Summary'
-            name='academic_summary'
-            type='file'
-            onChange={handleChange}
-          />
-          <FormBox
-            title='ITR Family'
+            title='Family Income Tax Return'
             name='itr_form'
             type='file'
             onChange={handleChange}
